@@ -6,29 +6,24 @@
     <group android:checkableBehavior="single">
         <item
                 android:id="@+id/nav_speedCamera"
-                android:icon="@drawable/ic_menu_camera"
+                android:icon="@drawable/ic_menu_speedcamera"
                 android:title="@string/menu_speedCamera"/>
         <item
                 android:id="@+id/nav_avgSpeedCheck"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_menu_avgspeedcheck"
                 android:title="@string/menu_avgSpeedCheck"/>
         <item
                 android:id="@+id/nav_policeCheck"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_menu_policecheck"
                 android:title="@string/menu_policeCheck"/>
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/account">
         <menu>
             <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_menu_share"
-                    android:title="@string/menu_share"/>
-            <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/ic_menu_send"
-                    android:title="@string/menu_send"/>
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_menu_logout"
+                    android:title="@string/menu_logout"/>
         </menu>
     </item>
-
 </menu>
