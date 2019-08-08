@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "450869577051",
+    "firebase_url": "https://flits-hogent.firebaseio.com",
+    "project_id": "flits-hogent",
+    "storage_bucket": "flits-hogent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450869577051:android:41c6294ab99366c7",
+        "android_client_info": {
+          "package_name": "be.jakoblierman.flits"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450869577051-tqtni47im5qs3hk042i78h0uhd846mh4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "be.jakoblierman.flits",
+            "certificate_hash": "09b3ac8ac16d16465887a1ead8402b5a9a7e1614"
+          }
+        },
+        {
+          "client_id": "450869577051-3lanr6h06r7l9nh0trrs608ndg42lfkg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyreImeMQu9QE4xzY5fsCKvj78lxVF-Z4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450869577051-3lanr6h06r7l9nh0trrs608ndg42lfkg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "450869577051-qbrlaq99odrnv2lpfsitk4lm4bianq1l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "be.jakoblierman.Flits"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
