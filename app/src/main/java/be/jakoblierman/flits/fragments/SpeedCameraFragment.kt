@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import be.jakoblierman.flits.R
 import be.jakoblierman.flits.databinding.FragmentSpeedCameraBinding
 import be.jakoblierman.flits.viewmodels.SpeedCameraViewModel
+import kotlinx.android.synthetic.main.fragment_speed_camera.*
 
 
 class SpeedCameraFragment : Fragment() {
@@ -34,6 +35,21 @@ class SpeedCameraFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        // Hides description elements if no description is present
+        if (viewModel.speedCamera.description.isBlank()) {
+            text_description_title.visibility = View.GONE
+            text_description_value.visibility = View.GONE
+        }
+
+        // Hides image is none is present
+        if (viewModel.speedCamera.imagePath.isBlank())
+            imageView.visibility = View.GONE
+        
     }
 
 }

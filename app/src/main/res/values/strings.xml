@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Flits</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -12,4 +13,14 @@
     <string name="menu_policeCheck">Police checks</string>
     <string name="menu_logout">Logout</string>
     <string name="account">Account</string>
+
+    <string name="detail_location">Location</string>
+    <string name="detail_beginlocation">Beginlocation</string>
+    <string name="detail_endlocation">Endlocation</string>
+    <string name="detail_image">Image</string>
+    <string name="detail_description">Description</string>
+    <string name="detail_kind">Kind</string>
+    <string name="detail_optional">Optional</string>
+    <string name="detail_image_contentdescription">Image of the speed camera</string>
+
 </resources>
