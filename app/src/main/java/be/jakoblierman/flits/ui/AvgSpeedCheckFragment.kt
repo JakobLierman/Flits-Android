@@ -11,19 +11,32 @@ import be.jakoblierman.flits.R
 import be.jakoblierman.flits.databinding.FragmentAvgSpeedCheckBinding
 import be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel
 
+private const val ARG_AVGSPEEDCHECK_ID = "avgSpeedCheckId"
+
 class AvgSpeedCheckFragment : Fragment() {
 
+    private var avgSpeedCheckId: String? = null
+
     companion object {
-        fun newInstance() = AvgSpeedCheckFragment()
+        @JvmStatic
+        fun newInstance(avgSpeedCheckId: String) =
+            AvgSpeedCheckFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_AVGSPEEDCHECK_ID, avgSpeedCheckId)
+                }
+            }
     }
 
     private lateinit var viewModel: AvgSpeedCheckViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            avgSpeedCheckId = it.getString(ARG_AVGSPEEDCHECK_ID)
+        }
+    }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewModel = ViewModelProviders.of(this).get(AvgSpeedCheckViewModel::class.java)
 
         val binding: FragmentAvgSpeedCheckBinding =
@@ -32,7 +45,11 @@ class AvgSpeedCheckFragment : Fragment() {
         binding.lifecycleOwner = this.viewLifecycleOwner
 
         return binding.root
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        arguments?.getString("avgSpeedCheckId")?.let { viewModel.getAvgSpeedCheckById(it) }
     }
 
 }
