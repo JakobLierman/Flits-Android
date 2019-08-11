@@ -8,73 +8,94 @@
                 name="viewmodel"
                 type="be.jakoblierman.flits.viewmodels.SpeedCameraViewModel"/>
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-                android:text="@string/detail_location"
+        <ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/text_location_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-                android:text="@{viewmodel.speedCamera.location}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_location_value"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/text_location_title"/>
-        <TextView
-                android:text="@string/detail_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_description_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/text_location_value"/>
-        <TextView
-                android:text="@{viewmodel.speedCamera.description}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_description_value"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/text_description_title"/>
-        <TextView
-                android:text="@string/detail_kind"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_kind_title" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_description_value"
+                android:id="@+id/progressBar"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp" android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-        <TextView
-                android:text="@{viewmodel.speedCamera.kind}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_kind_value" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_kind_title" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp" android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_timestamp_value"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textStyle="italic"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"/>
-        <ImageView
-                android:src="@{viewmodel.speedCamera.imagePath}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_kind_value" android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp" android:contentDescription="@string/detail_image_contentdescription"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="@{safeUnbox(viewmodel.getLoadingVisibility())}"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/content"
+                android:visibility="@{safeUnbox(viewmodel.getObjectVisibility())}">
+
+            <TextView
+                    android:text="@string/detail_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_location_title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                    android:text="@{viewmodel.speedCamera.location}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_location_value"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/text_location_title"/>
+            <TextView
+                    android:text="@string/detail_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_description_title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/text_location_value"/>
+            <TextView
+                    android:text="@{viewmodel.speedCamera.description}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_description_value"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/text_description_title"/>
+            <TextView
+                    android:text="@string/detail_kind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_kind_title" android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_description_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+            <TextView
+                    android:text="@{viewmodel.speedCamera.kind}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_kind_value" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_kind_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_kind_value" android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp" android:contentDescription="@string/detail_image_contentdescription"
+            />
+            <TextView
+                    android:text="@{viewmodel.speedCamera.timeCreated.toString()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_timestamp_value"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textStyle="italic"
+                    android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

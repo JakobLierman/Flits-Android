@@ -1,19 +1,25 @@
-package be.jakoblierman.flits
+package be.jakoblierman.flits.ui
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.core.view.GravityCompat
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.view.Menu
 import android.view.MenuItem
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import android.view.Menu
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import be.jakoblierman.flits.R
+import be.jakoblierman.flits.dummy.DummyContent
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    ListItemFragment.OnListFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +35,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this, drawerLayout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+        
+        // Set logger
+        Logger.addLogAdapter(AndroidLogAdapter())
     }
 
     override fun onBackPressed() {
@@ -64,28 +75,44 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
+        val newFragment: Fragment
         when (item.itemId) {
-            R.id.nav_home -> {
-                // Handle the camera action
+            R.id.nav_speedCamera -> {
+                newFragment = ListItemFragment.newInstance(1)
+                this.supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.detail_container, newFragment)
+                    .commit()
             }
-            R.id.nav_gallery -> {
-
+            R.id.nav_avgSpeedCheck -> {
+                newFragment = ListItemFragment.newInstance(1)
+                this.supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.detail_container, newFragment)
+                    .commit()
             }
-            R.id.nav_slideshow -> {
-
+            R.id.nav_policeCheck -> {
+                newFragment = ListItemFragment.newInstance(1)
+                this.supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.detail_container, newFragment)
+                    .commit()
             }
-            R.id.nav_tools -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
+            R.id.nav_logout -> {
+                // TODO - Implement logout
+                // TESTING FRAGMENT
+                newFragment = SpeedCameraFragment.newInstance()
+                this.supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.detail_container, newFragment)
+                    .commit()
             }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
     }
 }
