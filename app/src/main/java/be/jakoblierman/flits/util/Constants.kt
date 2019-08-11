@@ -4,7 +4,4 @@ object Constants {
 
     const val BASE_URL = "https://flits-backend.herokuapp.com/API/"
 
-    val NETWORK_TIMEOUT = 3000
-
-
 }

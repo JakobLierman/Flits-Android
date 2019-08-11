@@ -10,7 +10,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import be.jakoblierman.flits.R
-import be.jakoblierman.flits.dummy.DummyContent
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -18,8 +17,7 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    ListItemFragment.OnListFragmentInteractionListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +41,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
-        
+
         // Set logger
         Logger.addLogAdapter(AndroidLogAdapter())
     }
@@ -78,25 +76,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val newFragment: Fragment
         when (item.itemId) {
             R.id.nav_speedCamera -> {
-                newFragment = ListItemFragment.newInstance(1)
-                this.supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.detail_container, newFragment)
-                    .commit()
+                // TODO - List SpeedCameras
             }
             R.id.nav_avgSpeedCheck -> {
-                newFragment = ListItemFragment.newInstance(1)
-                this.supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.detail_container, newFragment)
-                    .commit()
+                // TODO - List AvgSpeedChecks
             }
             R.id.nav_policeCheck -> {
-                newFragment = ListItemFragment.newInstance(1)
-                this.supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.detail_container, newFragment)
-                    .commit()
+                // TODO - List PoliceChecks
             }
             R.id.nav_logout -> {
                 // TODO - Implement logout
@@ -113,6 +99,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
-    }
 }
