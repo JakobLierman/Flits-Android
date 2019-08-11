@@ -15,7 +15,7 @@ data class SpeedCamera(
     var kind: String,
     @field:Json(name = "description")
     var description: String,
-    @field:Json(name = "image")
+    @field:Json(name = "imagePath")
     var imagePath: String,
     @field:Json(name = "user")
     var user: User,

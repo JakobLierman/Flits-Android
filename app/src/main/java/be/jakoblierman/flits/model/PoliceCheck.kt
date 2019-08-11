@@ -13,6 +13,8 @@ data class PoliceCheck(
     var location: String,
     @field:Json(name = "description")
     var description: String,
+    @field:Json(name = "imagePath")
+    var imagePath: String,
     @field:Json(name = "user")
     var userID: User,
     @field:Json(name = "likes")
