@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+        // Check the first item in the navigation menu
+        navView.menu.performIdentifierAction(R.id.nav_speedCamera, 0)
 
         // Set logger
         Logger.addLogAdapter(AndroidLogAdapter())
