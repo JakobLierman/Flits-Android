@@ -15,9 +15,16 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
+import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    /**
+     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
+     * device.
+     */
+    private var twoPane: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +50,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView.setNavigationItemSelectedListener(this)
         // Check the first item in the navigation menu
         navView.menu.performIdentifierAction(R.id.nav_speedCamera, 0)
+
+        // The detail container view will be present only in the large-screen layouts (res/values-w900dp).
+        // If this view is present, then the activity should be in two-pane mode.
+        if (detail_container != null)
+            twoPane = true
 
         // Set logger
         Logger.addLogAdapter(AndroidLogAdapter())

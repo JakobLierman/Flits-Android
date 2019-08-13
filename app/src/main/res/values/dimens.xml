@@ -14,4 +14,8 @@
     <dimen name="font_size_normal_list">16sp</dimen>
     <dimen name="font_size_large">20sp</dimen>
     <dimen name="font_size_huge">24sp</dimen>
+
+    <!-- Other dimensions. -->
+    <dimen name="list_width">300dp</dimen>
+    <dimen name="app_bar_height">200dp</dimen>
 </resources>
