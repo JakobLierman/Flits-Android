@@ -74,6 +74,40 @@ class PoliceCheckViewModel : BaseViewModel() {
         objectVisibility.value = View.GONE
     }
 
+    fun postPoliceCheck(policeCheck: PoliceCheck) {
+        disposables.add(
+            flitsApi.postPoliceCheck(policeCheck)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { onRetrieveStart() }
+                .doOnTerminate { onRetrieveFinish() }
+                .subscribe(
+                    { result -> onRetrieveSingleSuccess(result) },
+                    { error -> onRetrieveError(error) }
+                )
+        )
+    }
+
+    fun deletePoliceCheck() {
+        disposables.add(
+            flitsApi.deletePoliceCheck(policeCheck.value!!.id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { onRetrieveStart() }
+                .doOnTerminate { onRetrieveFinish() }
+                .subscribe(
+                    { result -> onRetrieveDeleteSuccess(result) },
+                    { error -> onRetrieveError(error) }
+                )
+        )
+    }
+
+    private fun onRetrieveDeleteSuccess(result: Boolean) {
+        // TODO
+        //policeCheck.value = result
+        Logger.i(result.toString())
+    }
+
     /**
      * Disposes the subscription when the [BaseViewModel] is no longer used.
      */

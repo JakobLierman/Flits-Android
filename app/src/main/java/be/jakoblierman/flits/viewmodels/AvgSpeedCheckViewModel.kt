@@ -74,6 +74,40 @@ class AvgSpeedCheckViewModel : BaseViewModel() {
         objectVisibility.value = View.GONE
     }
 
+    fun postAvgSpeedCheck(avgSpeedCheck: AvgSpeedCheck) {
+        disposables.add(
+            flitsApi.postAvgSpeedCheck(avgSpeedCheck)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { onRetrieveStart() }
+                .doOnTerminate { onRetrieveFinish() }
+                .subscribe(
+                    { result -> onRetrieveSingleSuccess(result) },
+                    { error -> onRetrieveError(error) }
+                )
+        )
+    }
+
+    fun deleteAvgSpeedCheck() {
+        disposables.add(
+            flitsApi.deleteAvgSpeedCheck(avgSpeedCheck.value!!.id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { onRetrieveStart() }
+                .doOnTerminate { onRetrieveFinish() }
+                .subscribe(
+                    { result -> onRetrieveDeleteSuccess(result) },
+                    { error -> onRetrieveError(error) }
+                )
+        )
+    }
+
+    private fun onRetrieveDeleteSuccess(result: Boolean) {
+        // TODO
+        //avgSpeedCheck.value = result
+        Logger.i(result.toString())
+    }
+
     /**
      * Disposes the subscription when the [BaseViewModel] is no longer used.
      */
