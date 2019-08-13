@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import be.jakoblierman.flits.R
 import be.jakoblierman.flits.model.SpeedCamera
@@ -11,10 +12,10 @@ import be.jakoblierman.flits.ui.ListFragment
 import kotlinx.android.synthetic.main.fragment_listitem.view.*
 
 class SpeedCameraRecyclerViewAdapter(
-    private val mValues: List<SpeedCamera>,
     private val mListener: ListFragment.OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<SpeedCameraRecyclerViewAdapter.ViewHolder>() {
 
+    private var mValues = mutableListOf<SpeedCamera>()
     private val mOnClickListener: View.OnClickListener
 
     init {
@@ -48,8 +49,33 @@ class SpeedCameraRecyclerViewAdapter(
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val titleView: TextView = mView.item_title
         val subtitleView: TextView = mView.item_subtitle
+    }
 
+    fun setData(newData: List<SpeedCamera>) {
+        val postDiffCallback = PostDiffCallback(mValues, newData)
+        val diffResult = DiffUtil.calculateDiff(postDiffCallback)
 
+        mValues.clear()
+        mValues.addAll(newData)
+
+        diffResult.dispatchUpdatesTo(this)
+    }
+
+    internal inner class PostDiffCallback(
+        private val oldItems: List<SpeedCamera>,
+        private val newItems: List<SpeedCamera>
+    ) :
+        DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldItems.size
+
+        override fun getNewListSize(): Int = newItems.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+            oldItems[oldItemPosition].id === newItems[newItemPosition].id
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+            oldItems[oldItemPosition] == newItems[newItemPosition]
     }
 
 }
