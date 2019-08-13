@@ -1,4 +1,4 @@
-package be.jakoblierman.flits
+package be.jakoblierman.flits.ui
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import be.jakoblierman.flits.R
 
 private const val ARG_ITEMKIND_ID = "itemKindId"
 private const val ARG_ITEMID = "itemId"
