@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import be.jakoblierman.flits.ItemDetailFragment
 import be.jakoblierman.flits.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -18,7 +19,10 @@ import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.content_main.*
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity :
+    AppCompatActivity(),
+    NavigationView.OnNavigationItemSelectedListener,
+    ListFragment.OnListFragmentInteractionListener {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -100,6 +104,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onListFragmentInteraction(itemKindId: Int, itemId: String) {
+        val fragment = ItemDetailFragment.newInstance(itemKindId, itemId)
+        if (twoPane) {
+            this.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.item_detail_container, fragment)
+                .commit()
+        } else {
+            this.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.main_content_container, fragment)
+                .commit()
+        }
     }
 
 }
