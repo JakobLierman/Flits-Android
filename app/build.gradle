@@ -15,6 +15,7 @@ android {
     dataBinding {
         enabled true
     }
+    android.defaultConfig.vectorDrawables.useSupportLibrary = true
 
     defaultConfig {
         applicationId "be.jakoblierman.flits"
