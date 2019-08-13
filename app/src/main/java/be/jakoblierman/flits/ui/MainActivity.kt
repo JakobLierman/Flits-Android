@@ -86,27 +86,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
+        // Handle navigation view item clicks.
         val newFragment: Fragment
-        when (item.itemId) {
-            R.id.nav_speedCamera -> {
-                // TODO - List SpeedCameras
-            }
-            R.id.nav_avgSpeedCheck -> {
-                // TODO - List AvgSpeedChecks
-            }
-            R.id.nav_policeCheck -> {
-                // TODO - List PoliceChecks
-            }
-            R.id.nav_logout -> {
-                // TODO - Implement logout
-                // TESTING FRAGMENT
-                newFragment = SpeedCameraFragment.newInstance()
-                this.supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.detail_container, newFragment)
-                    .commit()
-            }
+        if (item.itemId != R.id.nav_logout) {
+            newFragment = ListFragment.newInstance(item.itemId)
+            this.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.main_content_container, newFragment)
+                .commit()
+        } else {
+            TODO("logout not implemented")
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
