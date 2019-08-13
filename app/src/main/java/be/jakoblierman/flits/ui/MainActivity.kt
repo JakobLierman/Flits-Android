@@ -85,6 +85,9 @@ class MainActivity :
         // Handle navigation view item clicks.
         val newFragment: Fragment
         if (item.itemId != R.id.nav_logout) {
+            // Change toolbar title
+            supportActionBar!!.title = item.title
+            // Change ListFragment according to item type
             newFragment = ListFragment.newInstance(item.itemId)
             this.supportFragmentManager
                 .beginTransaction()
