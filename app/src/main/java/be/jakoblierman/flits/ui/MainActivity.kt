@@ -56,7 +56,7 @@ class MainActivity :
 
         // The detail container view will be present only in the large-screen layouts (res/values-w900dp).
         // If this view is present, then the activity should be in two-pane mode.
-        if (detail_container != null)
+        if (main_detail_container != null)
             twoPane = true
 
         // Set logger
@@ -106,16 +106,23 @@ class MainActivity :
     }
 
     override fun onListFragmentInteraction(itemKindId: Int, itemId: String) {
-        val fragment = ItemDetailFragment.newInstance(itemKindId, itemId)
+        var newFragment = Fragment()
+        when (itemKindId) {
+            R.id.nav_speedCamera -> newFragment = SpeedCameraFragment.newInstance(itemId)
+            R.id.nav_avgSpeedCheck -> newFragment = AvgSpeedCheckFragment.newInstance(itemId)
+            R.id.nav_policeCheck -> newFragment = PoliceCheckFragment.newInstance(itemId)
+        }
+
         if (twoPane) {
             this.supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.item_detail_container, fragment)
+                .replace(R.id.main_detail_container, newFragment)
                 .commit()
         } else {
             this.supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.main_content_container, fragment)
+                .replace(R.id.main_content_container, newFragment)
+                .addToBackStack(null)
                 .commit()
         }
     }
