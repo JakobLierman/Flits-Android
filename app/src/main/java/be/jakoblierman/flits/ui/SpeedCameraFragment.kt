@@ -21,7 +21,7 @@ class SpeedCameraFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(speedCameraId: String) =
+        fun newInstance(speedCameraId: String?) =
             SpeedCameraFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_SPEEDCAMERA_ID, speedCameraId)

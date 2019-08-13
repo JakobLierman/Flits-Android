@@ -19,7 +19,7 @@ class AvgSpeedCheckFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(avgSpeedCheckId: String) =
+        fun newInstance(avgSpeedCheckId: String?) =
             AvgSpeedCheckFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_AVGSPEEDCHECK_ID, avgSpeedCheckId)

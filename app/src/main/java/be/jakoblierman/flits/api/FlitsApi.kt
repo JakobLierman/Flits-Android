@@ -4,8 +4,7 @@ import be.jakoblierman.flits.model.AvgSpeedCheck
 import be.jakoblierman.flits.model.PoliceCheck
 import be.jakoblierman.flits.model.SpeedCamera
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface FlitsApi {
 
@@ -30,7 +29,7 @@ interface FlitsApi {
     /**
      * Get AvgSpeedCheck by id
      */
-    @GET("avgSpeedCheck/{id}")
+    @GET("avgSpeedChecks/{id}")
     fun getAvgSpeedCheckById(@Path("id") id: String): Observable<AvgSpeedCheck>
 
     /**
@@ -42,7 +41,43 @@ interface FlitsApi {
     /**
      * Get PoliceCheck by id
      */
-    @GET("policeCheck/{id}")
+    @GET("policeChecks/{id}")
     fun getPoliceCheckById(@Path("id") id: String): Observable<PoliceCheck>
-    
+
+    /**
+     * Post SpeedCamera
+     */
+    @POST("speedCameras")
+    fun postSpeedCamera(@Body speedCamera: SpeedCamera): Observable<SpeedCamera>
+
+    /**
+     * Post AvgSpeedCheck
+     */
+    @POST("avgSpeedChecks")
+    fun postAvgSpeedCheck(@Body avgSpeedCheck: AvgSpeedCheck): Observable<AvgSpeedCheck>
+
+    /**
+     * Post PoliceCheck
+     */
+    @POST("policeChecks")
+    fun postPoliceCheck(@Body policeCheck: PoliceCheck): Observable<PoliceCheck>
+
+    /**
+     * Delete SpeedCamera
+     */
+    @DELETE("speedCameras/{id}")
+    fun deleteSpeedCamera(@Path("id") id: String?): Observable<Boolean>
+
+    /**
+     * Delete AvgSpeedCheck
+     */
+    @DELETE("avgSpeedChecks/{id}")
+    fun deleteAvgSpeedCheck(@Path("id") id: String?): Observable<Boolean>
+
+    /**
+     * Delete PoliceCheck
+     */
+    @DELETE("policeChecks/{id}")
+    fun deletePoliceCheck(@Path("id") id: String?): Observable<Boolean>
+
 }

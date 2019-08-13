@@ -101,7 +101,7 @@ class MainActivity :
         return true
     }
 
-    override fun onListFragmentInteraction(itemKindId: Int, itemId: String) {
+    override fun onListFragmentInteraction(itemKindId: Int, itemId: String?) {
         var newFragment = Fragment()
         when (itemKindId) {
             R.id.nav_speedCamera -> newFragment = SpeedCameraFragment.newInstance(itemId)

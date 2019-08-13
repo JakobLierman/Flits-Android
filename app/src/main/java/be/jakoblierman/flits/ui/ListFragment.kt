@@ -94,7 +94,7 @@ class ListFragment : Fragment() {
     }
 
     interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(itemKindId: Int, itemId: String)
+        fun onListFragmentInteraction(itemKindId: Int, itemId: String?)
     }
 
     companion object {

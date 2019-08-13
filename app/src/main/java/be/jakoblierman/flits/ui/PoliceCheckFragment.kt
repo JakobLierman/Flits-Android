@@ -21,7 +21,7 @@ class PoliceCheckFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(policeCheckId: String) =
+        fun newInstance(policeCheckId: String?) =
             PoliceCheckFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_POLICECHECK_ID, policeCheckId)
