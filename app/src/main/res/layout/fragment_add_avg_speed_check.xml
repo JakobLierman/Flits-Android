@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
@@ -12,50 +12,52 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="textAutoCorrect|textPersonName"
-                android:text=""
-                android:ems="10"
-                android:id="@+id/input_beginLocation"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"
+                android:hint="@string/hint_beginlocation" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:hint="@string/hint_beginlocation"
-                android:importantForAutofill="no" tools:ignore="UnusedAttribute"
-                android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"/>
+                android:id="@+id/inputlayout_beginlocation">
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/input_beginlocation"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="textAutoCorrect|textPersonName"
-                android:text=""
-                android:ems="10"
-                android:id="@+id/input_endLocation"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:hint="@string/hint_endlocation"
-                android:importantForAutofill="no" tools:ignore="UnusedAttribute"
-                app:layout_constraintTop_toBottomOf="@+id/input_beginLocation" android:layout_marginTop="16dp"/>
-        <EditText
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                android:id="@+id/inputlayout_endlocation"
+                app:layout_constraintTop_toBottomOf="@+id/inputlayout_beginlocation" android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/input_endlocation"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="textAutoCorrect|textPersonName"
-                android:text=""
-                android:ems="10"
-                android:id="@+id/input_description"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/input_endLocation"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:hint="@string/hint_description"
-                android:importantForAutofill="no" tools:ignore="UnusedAttribute"/>
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/inputlayout_endlocation"
+                android:id="@+id/inputlayout_description" android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/input_description"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
                 android:text="@string/action_cancel"
@@ -67,7 +69,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button_save"
                 android:layout_marginEnd="8dp"
-                android:textSize="@dimen/font_size_normal"/>
+                android:textSize="@dimen/font_size_normal" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/inputlayout_description"
+                app:layout_constraintVertical_bias="1.0"/>
         <Button
                 android:text="@string/action_save"
                 style="@style/Widget.MaterialComponents.Button.Icon"
@@ -79,7 +83,9 @@
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:textSize="@dimen/font_size_normal"
-                app:icon="@drawable/ic_save"/>
+                app:icon="@drawable/ic_save" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/inputlayout_description"
+                app:layout_constraintVertical_bias="1.0"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

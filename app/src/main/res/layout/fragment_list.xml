@@ -12,4 +12,4 @@
         tools:listitem="@layout/fragment_listitem"
         android:clickable="true"
         android:focusable="true"
-        android:foreground="?android:selectableItemBackground"/>
+        android:foreground="?attr/selectableItemBackground" tools:ignore="UnusedAttribute"/>
