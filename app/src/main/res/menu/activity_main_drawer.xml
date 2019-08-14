@@ -7,8 +7,7 @@
         <item
                 android:id="@+id/nav_speedCamera"
                 android:icon="@drawable/ic_menu_speedcamera"
-                android:title="@string/menu_speedCamera"
-                android:checked="true"/>
+                android:title="@string/menu_speedCamera"/>
         <item
                 android:id="@+id/nav_avgSpeedCheck"
                 android:icon="@drawable/ic_menu_avgspeedcheck"

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -51,8 +52,9 @@ class SpeedCameraFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        arguments?.getString("speedCameraId")?.let { viewModel.getSpeedCameraById(it) }
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.menu_speedCamera)
 
+        arguments?.getString("speedCameraId")?.let { viewModel.getSpeedCameraById(it) }
         viewModel.speedCamera.removeObservers(this)
         viewModel.speedCamera.observe(this, Observer { speedCamera ->
             // Hides description elements if no description is present

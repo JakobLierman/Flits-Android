@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -77,6 +78,19 @@ class ListFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        // Change toolbar title
+        when (itemKindId) {
+            R.id.nav_speedCamera -> (activity as AppCompatActivity).supportActionBar!!.title =
+                getString(R.string.menu_speedCamera)
+            R.id.nav_avgSpeedCheck -> (activity as AppCompatActivity).supportActionBar!!.title =
+                getString(R.string.menu_avgSpeedCheck)
+            R.id.nav_policeCheck -> (activity as AppCompatActivity).supportActionBar!!.title =
+                getString(R.string.menu_policeCheck)
+        }
     }
 
     override fun onAttach(context: Context) {

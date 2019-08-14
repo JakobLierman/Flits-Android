@@ -13,7 +13,7 @@
     <string name="action_new">New</string>
 
     <string name="menu_speedCamera">Speed Cameras</string>
-    <string name="menu_avgSpeedCheck">Average Speed checks</string>
+    <string name="menu_avgSpeedCheck">Average Speed Checks</string>
     <string name="menu_policeCheck">Police Checks</string>
     <string name="menu_logout">Logout</string>
     <string name="account">Account</string>

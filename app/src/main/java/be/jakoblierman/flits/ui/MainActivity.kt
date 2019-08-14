@@ -45,8 +45,11 @@ class MainActivity :
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
-        // Check the first item in the navigation menu
-        navView.menu.performIdentifierAction(R.id.nav_speedCamera, 0)
+        if (savedInstanceState == null) {
+            // Check the first item in the navigation menu
+            navView.menu.findItem(R.id.nav_speedCamera).isChecked = true
+            navView.menu.performIdentifierAction(R.id.nav_speedCamera, 0)
+        }
 
         // The detail container view will be present only in the large-screen layouts (res/values-w900dp).
         // If this view is present, then the activity should be in two-pane mode.
@@ -94,8 +97,6 @@ class MainActivity :
         // Handle navigation view item clicks.
         val newFragment: Fragment
         if (item.itemId != R.id.nav_logout) {
-            // Change toolbar title
-            supportActionBar!!.title = item.title
             // Change ListFragment according to item type
             newFragment = ListFragment.newInstance(item.itemId)
             this.supportFragmentManager
