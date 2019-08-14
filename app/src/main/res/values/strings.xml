@@ -10,6 +10,7 @@
 
     <string name="action_cancel">Cancel</string>
     <string name="action_save">Save</string>
+    <string name="action_new">New</string>
 
     <string name="menu_speedCamera">Speed Cameras</string>
     <string name="menu_avgSpeedCheck">Average Speed checks</string>
@@ -27,14 +28,12 @@
     <string name="detail_endlocation">Endlocation</string>
     <string name="detail_image">Image</string>
     <string name="detail_description">Description</string>
-    <string name="input_description_optional">Description (optional)</string>
     <string name="detail_kind">Kind</string>
     <string name="detail_image_contentdescription">Image of the speed camera or police check</string>
-    <string name="hint_location_speedcamera">Location of the speed camera</string>
-    <string name="hint_beginlocation_avgspeedcheck">Beginlocation of the average speed check</string>
-    <string name="hint_endlocation_avgspeedcheck">Endlocation of the average speed check</string>
-    <string name="hint_location_policecheck">Location of the police check</string>
-    <string name="hint_description">Examples: behind the big bush, just before the bend, …</string>
+    <string name="hint_location">Location</string>
+    <string name="hint_beginlocation">Beginlocation</string>
+    <string name="hint_endlocation">Endlocation</string>
+    <string name="hint_description">Description (optional)</string>
 
     <string name="title_add_speedcamera">New Speed Camera</string>
     <string name="title_add_avgspeedcheck">New Average Speed Check</string>

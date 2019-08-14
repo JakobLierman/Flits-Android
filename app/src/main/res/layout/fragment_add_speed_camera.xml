@@ -12,34 +12,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-                android:text="@string/title_add_speedcamera"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_title"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
         <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textAutoCorrect|textPersonName"
-                android:text="@string/detail_location"
+                android:text=""
                 android:ems="10"
                 android:id="@+id/input_location"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:hint="@string/hint_location_speedcamera"
+                android:hint="@string/hint_location"
                 android:importantForAutofill="no" tools:ignore="UnusedAttribute"
-                app:layout_constraintTop_toBottomOf="@+id/text_title" android:layout_marginTop="16dp"/>
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"/>
         <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textAutoCorrect|textPersonName"
-                android:text="@string/input_description_optional"
+                android:text=""
                 android:ems="10"
                 android:id="@+id/input_description"
                 app:layout_constraintStart_toStartOf="parent"

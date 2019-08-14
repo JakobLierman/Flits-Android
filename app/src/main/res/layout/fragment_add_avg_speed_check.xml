@@ -12,49 +12,40 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-                android:text="@string/title_add_avgspeedcheck"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_title"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
         <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textAutoCorrect|textPersonName"
-                android:text="@string/detail_beginlocation"
+                android:text=""
                 android:ems="10"
                 android:id="@+id/input_beginLocation"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:hint="@string/hint_beginlocation_avgspeedcheck"
+                android:hint="@string/hint_beginlocation"
                 android:importantForAutofill="no" tools:ignore="UnusedAttribute"
-                app:layout_constraintTop_toBottomOf="@+id/text_title" android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textAutoCorrect|textPersonName"
-                android:text="@string/detail_endlocation"
+                android:text=""
                 android:ems="10"
                 android:id="@+id/input_endLocation"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:hint="@string/hint_endlocation_avgspeedcheck"
+                android:hint="@string/hint_endlocation"
                 android:importantForAutofill="no" tools:ignore="UnusedAttribute"
                 app:layout_constraintTop_toBottomOf="@+id/input_beginLocation" android:layout_marginTop="16dp"/>
         <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textAutoCorrect|textPersonName"
-                android:text="@string/input_description_optional"
+                android:text=""
                 android:ems="10"
                 android:id="@+id/input_description"
                 app:layout_constraintStart_toStartOf="parent"

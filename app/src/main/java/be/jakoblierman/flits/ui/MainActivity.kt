@@ -13,6 +13,7 @@ import be.jakoblierman.flits.R
 import com.google.android.material.navigation.NavigationView
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 
@@ -76,6 +77,14 @@ class MainActivity :
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
+            R.id.action_new -> {
+                when (nav_view.checkedItem!!.itemId) {
+                    R.id.nav_speedCamera -> openDetailFragment(AddSpeedCameraFragment.newInstance())
+                    R.id.nav_avgSpeedCheck -> openDetailFragment(AddAvgSpeedCheckFragment.newInstance())
+                    R.id.nav_policeCheck -> openDetailFragment(AddPoliceCheckFragment.newInstance())
+                }
+                return true
+            }
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
@@ -102,13 +111,14 @@ class MainActivity :
     }
 
     override fun onListFragmentInteraction(itemKindId: Int, itemId: String?) {
-        var newFragment = Fragment()
         when (itemKindId) {
-            R.id.nav_speedCamera -> newFragment = SpeedCameraFragment.newInstance(itemId)
-            R.id.nav_avgSpeedCheck -> newFragment = AvgSpeedCheckFragment.newInstance(itemId)
-            R.id.nav_policeCheck -> newFragment = PoliceCheckFragment.newInstance(itemId)
+            R.id.nav_speedCamera -> openDetailFragment(SpeedCameraFragment.newInstance(itemId))
+            R.id.nav_avgSpeedCheck -> openDetailFragment(AvgSpeedCheckFragment.newInstance(itemId))
+            R.id.nav_policeCheck -> openDetailFragment(PoliceCheckFragment.newInstance(itemId))
         }
+    }
 
+    private fun openDetailFragment(newFragment: Fragment) {
         if (twoPane) {
             this.supportFragmentManager
                 .beginTransaction()
