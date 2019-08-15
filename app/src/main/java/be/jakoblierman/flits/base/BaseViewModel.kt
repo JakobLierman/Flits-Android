@@ -7,6 +7,7 @@ import be.jakoblierman.flits.injection.module.NetworkModule
 import be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel
 import be.jakoblierman.flits.viewmodels.PoliceCheckViewModel
 import be.jakoblierman.flits.viewmodels.SpeedCameraViewModel
+import be.jakoblierman.flits.viewmodels.UserViewModel
 
 abstract class BaseViewModel : ViewModel() {
 
@@ -28,6 +29,7 @@ abstract class BaseViewModel : ViewModel() {
             is SpeedCameraViewModel -> injectorComponent.inject(this)
             is AvgSpeedCheckViewModel -> injectorComponent.inject(this)
             is PoliceCheckViewModel -> injectorComponent.inject(this)
+            is UserViewModel -> injectorComponent.inject(this)
         }
     }
 

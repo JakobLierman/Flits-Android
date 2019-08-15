@@ -4,6 +4,7 @@ import be.jakoblierman.flits.injection.module.NetworkModule
 import be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel
 import be.jakoblierman.flits.viewmodels.PoliceCheckViewModel
 import be.jakoblierman.flits.viewmodels.SpeedCameraViewModel
+import be.jakoblierman.flits.viewmodels.UserViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -14,6 +15,7 @@ interface ViewModelInjectorComponent {
     fun inject(speedCameraViewModel: SpeedCameraViewModel)
     fun inject(avgSpeedCheckViewModel: AvgSpeedCheckViewModel)
     fun inject(policeCheckViewModel: PoliceCheckViewModel)
+    fun inject(userViewModel: UserViewModel)
 
     @Component.Builder
     interface Builder {
