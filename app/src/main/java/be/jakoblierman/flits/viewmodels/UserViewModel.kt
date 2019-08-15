@@ -6,7 +6,9 @@ import be.jakoblierman.flits.api.FlitsApi
 import be.jakoblierman.flits.base.BaseViewModel
 import be.jakoblierman.flits.model.User
 import com.orhanobut.logger.Logger
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class UserViewModel : BaseViewModel() {
@@ -14,27 +16,45 @@ class UserViewModel : BaseViewModel() {
     val user = MutableLiveData<User>()
     val loggedInUser = MutableLiveData<User>()
     val loadingVisibility = MutableLiveData<Int>()
+    val validEmail = MutableLiveData<Boolean>()
 
     @Inject
     lateinit var flitsApi: FlitsApi
     private var disposables = CompositeDisposable()
 
     fun register(fullName: String, email: String, password: String): User {
-        // TODO: register
+        TODO("register")
     }
 
-    fun login(email: String, password: String): User? {
-        // TODO: login
-        return null
+    fun login(email: String, password: String): User {
+        TODO("login")
     }
 
-    fun isUniqueEmail(email: String): Boolean {
-        // TODO: isUniqueEmail
-        return false
+    fun isValidEmail(email: String): Boolean {
+        return flitsApi.isValidEmail(email).blockingSingle()
+    }
+
+    fun isValidEmailASync(email: String) {
+        disposables.add(
+            flitsApi.isValidEmail(email)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { onRetrieveStart() }
+                .doOnTerminate { onRetrieveFinish() }
+                .subscribe(
+                    { results -> onRetrieveValidEmailSuccess(results) },
+                    { error -> onRetrieveError(error) }
+                )
+        )
+    }
+
+    private fun onRetrieveValidEmailSuccess(result: Boolean) {
+        validEmail.value = result
+        Logger.i(result.toString())
     }
 
     fun logout() {
-        // TODO: revoke authentication
+        TODO("revoke authentication")
     }
 
     private fun onRetrieveFinish() {

@@ -84,20 +84,30 @@ interface FlitsApi {
     /**
      * Register
      */
+    @FormUrlEncoded
     @POST("users/register")
-    fun register(@Body fullName: String, @Body email: String, @Body password: String): Observable<User>
+    fun register(
+        @Field("fullName") fullName: String,
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Observable<User>
 
     /**
      * Login
      */
+    @FormUrlEncoded
     @POST("users/login")
-    fun login(@Body email: String, @Body password: String): Observable<User>
+    fun login(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Observable<User>
 
     /**
      * Check if email is unique
      */
-    @POST("users/isUniqueEmail")
-    fun isUniqueEmail(@Body email: String): Observable<String>
+    @FormUrlEncoded
+    @POST("users/isValidEmail")
+    fun isValidEmail(@Field("email") email: String): Observable<Boolean>
 
     /**
      * Get user by email
