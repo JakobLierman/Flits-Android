@@ -3,6 +3,7 @@ package be.jakoblierman.flits.api
 import be.jakoblierman.flits.model.AvgSpeedCheck
 import be.jakoblierman.flits.model.PoliceCheck
 import be.jakoblierman.flits.model.SpeedCamera
+import be.jakoblierman.flits.model.User
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -79,5 +80,35 @@ interface FlitsApi {
      */
     @DELETE("policeChecks/{id}")
     fun deletePoliceCheck(@Path("id") id: String?): Observable<Boolean>
+
+    /**
+     * Register
+     */
+    @POST("users/register")
+    fun register(@Body fullName: String, @Body email: String, @Body password: String): Observable<User>
+
+    /**
+     * Login
+     */
+    @POST("users/login")
+    fun login(@Body email: String, @Body password: String): Observable<User>
+
+    /**
+     * Check if email is unique
+     */
+    @POST("users/isUniqueEmail")
+    fun isUniqueEmail(@Body email: String): Observable<String>
+
+    /**
+     * Get user by email
+     */
+    @GET("users/{email}")
+    fun getUserByEmail(@Path("email") email: String): Observable<User>
+
+    /**
+     * Get user by id
+     */
+    @GET("users/id/{id}")
+    fun getUserById(@Path("id") id: String): Observable<User>
 
 }
