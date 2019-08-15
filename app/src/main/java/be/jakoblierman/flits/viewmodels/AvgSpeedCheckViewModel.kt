@@ -74,9 +74,9 @@ class AvgSpeedCheckViewModel : BaseViewModel() {
         objectVisibility.value = View.GONE
     }
 
-    fun postAvgSpeedCheck(avgSpeedCheck: AvgSpeedCheck) {
+    fun postAvgSpeedCheck(authToken: String, avgSpeedCheck: AvgSpeedCheck) {
         disposables.add(
-            flitsApi.postAvgSpeedCheck(avgSpeedCheck)
+            flitsApi.postAvgSpeedCheck(authToken, avgSpeedCheck)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { onRetrieveStart() }
@@ -88,9 +88,9 @@ class AvgSpeedCheckViewModel : BaseViewModel() {
         )
     }
 
-    fun deleteAvgSpeedCheck() {
+    fun deleteAvgSpeedCheck(authToken: String) {
         disposables.add(
-            flitsApi.deleteAvgSpeedCheck(avgSpeedCheck.value!!.id)
+            flitsApi.deleteAvgSpeedCheck(authToken, avgSpeedCheck.value!!.id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { onRetrieveStart() }

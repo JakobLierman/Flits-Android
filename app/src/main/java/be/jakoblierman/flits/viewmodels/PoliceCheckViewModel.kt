@@ -74,9 +74,9 @@ class PoliceCheckViewModel : BaseViewModel() {
         objectVisibility.value = View.GONE
     }
 
-    fun postPoliceCheck(policeCheck: PoliceCheck) {
+    fun postPoliceCheck(authToken: String, policeCheck: PoliceCheck) {
         disposables.add(
-            flitsApi.postPoliceCheck(policeCheck)
+            flitsApi.postPoliceCheck(authToken, policeCheck)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { onRetrieveStart() }
@@ -88,9 +88,9 @@ class PoliceCheckViewModel : BaseViewModel() {
         )
     }
 
-    fun deletePoliceCheck() {
+    fun deletePoliceCheck(authToken: String) {
         disposables.add(
-            flitsApi.deletePoliceCheck(policeCheck.value!!.id)
+            flitsApi.deletePoliceCheck(authToken, policeCheck.value!!.id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { onRetrieveStart() }

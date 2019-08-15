@@ -18,6 +18,7 @@ import be.jakoblierman.flits.databinding.FragmentAddSpeedCameraBinding
 import be.jakoblierman.flits.model.SpeedCamera
 import be.jakoblierman.flits.model.User
 import be.jakoblierman.flits.viewmodels.SpeedCameraViewModel
+import be.jakoblierman.flits.viewmodels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
@@ -36,12 +37,14 @@ class AddSpeedCameraFragment : Fragment() {
     }
 
     private lateinit var viewModel: SpeedCameraViewModel
+    private lateinit var loggedInUser: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProviders.of(this).get(SpeedCameraViewModel::class.java)
+        loggedInUser = ViewModelProviders.of(this).get(UserViewModel::class.java).loggedInUser.value!!
 
         val binding: FragmentAddSpeedCameraBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_speed_camera, container, false)
@@ -72,7 +75,7 @@ class AddSpeedCameraFragment : Fragment() {
                 // TODO USER
                 user = User(id = "1", fullName = "Test", email = "test@test.co.uk")
             )
-            viewModel.postSpeedCamera(speedCamera)
+            viewModel.postSpeedCamera(loggedInUser.token!!, speedCamera)
             activity!!.supportFragmentManager.popBackStack()
             Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
         }

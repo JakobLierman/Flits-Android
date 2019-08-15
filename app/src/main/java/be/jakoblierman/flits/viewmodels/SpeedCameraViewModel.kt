@@ -75,9 +75,9 @@ class SpeedCameraViewModel : BaseViewModel() {
         objectVisibility.value = GONE
     }
 
-    fun postSpeedCamera(speedCamera: SpeedCamera) {
+    fun postSpeedCamera(authToken: String, speedCamera: SpeedCamera) {
         disposables.add(
-            flitsApi.postSpeedCamera(speedCamera)
+            flitsApi.postSpeedCamera(authToken, speedCamera)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { onRetrieveStart() }
@@ -89,9 +89,9 @@ class SpeedCameraViewModel : BaseViewModel() {
         )
     }
 
-    fun deleteSpeedCamera() {
+    fun deleteSpeedCamera(authToken: String) {
         disposables.add(
-            flitsApi.deleteSpeedCamera(speedCamera.value!!.id)
+            flitsApi.deleteSpeedCamera(authToken, speedCamera.value!!.id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { onRetrieveStart() }

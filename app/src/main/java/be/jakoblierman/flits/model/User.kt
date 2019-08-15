@@ -11,5 +11,7 @@ data class User(
     @field:Json(name = "fullName")
     val fullName: String,
     @field:Json(name = "email")
-    val email: String
+    val email: String,
+    @field:Json(name = "tempToken")
+    val token: String? = null
 ) : Parcelable

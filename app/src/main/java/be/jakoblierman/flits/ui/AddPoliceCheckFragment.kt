@@ -16,6 +16,7 @@ import be.jakoblierman.flits.databinding.FragmentAddPoliceCheckBinding
 import be.jakoblierman.flits.model.PoliceCheck
 import be.jakoblierman.flits.model.User
 import be.jakoblierman.flits.viewmodels.PoliceCheckViewModel
+import be.jakoblierman.flits.viewmodels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
@@ -33,12 +34,14 @@ class AddPoliceCheckFragment : Fragment() {
     }
 
     private lateinit var viewModel: PoliceCheckViewModel
+    private lateinit var loggedInUser: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProviders.of(this).get(PoliceCheckViewModel::class.java)
+        loggedInUser = ViewModelProviders.of(this).get(UserViewModel::class.java).loggedInUser.value!!
 
         val binding: FragmentAddPoliceCheckBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_police_check, container, false)
@@ -67,7 +70,7 @@ class AddPoliceCheckFragment : Fragment() {
                 // TODO USER
                 user = User(id = "1", fullName = "Test", email = "test@test.co.uk")
             )
-            viewModel.postPoliceCheck(policeCheck)
+            viewModel.postPoliceCheck(loggedInUser.token!!, policeCheck)
             activity!!.supportFragmentManager.popBackStack()
             Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
         }

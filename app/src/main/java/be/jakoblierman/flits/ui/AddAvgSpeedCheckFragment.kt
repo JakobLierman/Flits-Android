@@ -17,6 +17,7 @@ import be.jakoblierman.flits.databinding.FragmentAddAvgSpeedCheckBinding
 import be.jakoblierman.flits.model.AvgSpeedCheck
 import be.jakoblierman.flits.model.User
 import be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel
+import be.jakoblierman.flits.viewmodels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
@@ -35,12 +36,14 @@ class AddAvgSpeedCheckFragment : Fragment() {
     }
 
     private lateinit var viewModel: AvgSpeedCheckViewModel
+    private lateinit var loggedInUser: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProviders.of(this).get(AvgSpeedCheckViewModel::class.java)
+        loggedInUser = ViewModelProviders.of(this).get(UserViewModel::class.java).loggedInUser.value!!
 
         val binding: FragmentAddAvgSpeedCheckBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_avg_speed_check, container, false)
@@ -69,7 +72,7 @@ class AddAvgSpeedCheckFragment : Fragment() {
                 // TODO USER
                 user = User(id = "1", fullName = "Test", email = "test@test.co.uk")
             )
-            viewModel.postAvgSpeedCheck(avgSpeedCheck)
+            viewModel.postAvgSpeedCheck(loggedInUser.token!!, avgSpeedCheck)
             activity!!.supportFragmentManager.popBackStack()
             Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
         }

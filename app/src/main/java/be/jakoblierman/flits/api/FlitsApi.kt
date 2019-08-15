@@ -49,37 +49,37 @@ interface FlitsApi {
      * Post SpeedCamera
      */
     @POST("speedCameras")
-    fun postSpeedCamera(@Body speedCamera: SpeedCamera): Observable<SpeedCamera>
+    fun postSpeedCamera(@Header("Authorization") authToken: String, @Body speedCamera: SpeedCamera): Observable<SpeedCamera>
 
     /**
      * Post AvgSpeedCheck
      */
     @POST("avgSpeedChecks")
-    fun postAvgSpeedCheck(@Body avgSpeedCheck: AvgSpeedCheck): Observable<AvgSpeedCheck>
+    fun postAvgSpeedCheck(@Header("Authorization") authToken: String, @Body avgSpeedCheck: AvgSpeedCheck): Observable<AvgSpeedCheck>
 
     /**
      * Post PoliceCheck
      */
     @POST("policeChecks")
-    fun postPoliceCheck(@Body policeCheck: PoliceCheck): Observable<PoliceCheck>
+    fun postPoliceCheck(@Header("Authorization") authToken: String, @Body policeCheck: PoliceCheck): Observable<PoliceCheck>
 
     /**
      * Delete SpeedCamera
      */
     @DELETE("speedCameras/{id}")
-    fun deleteSpeedCamera(@Path("id") id: String?): Observable<Boolean>
+    fun deleteSpeedCamera(@Header("Authorization") authToken: String, @Path("id") id: String?): Observable<Boolean>
 
     /**
      * Delete AvgSpeedCheck
      */
     @DELETE("avgSpeedChecks/{id}")
-    fun deleteAvgSpeedCheck(@Path("id") id: String?): Observable<Boolean>
+    fun deleteAvgSpeedCheck(@Header("Authorization") authToken: String, @Path("id") id: String?): Observable<Boolean>
 
     /**
      * Delete PoliceCheck
      */
     @DELETE("policeChecks/{id}")
-    fun deletePoliceCheck(@Path("id") id: String?): Observable<Boolean>
+    fun deletePoliceCheck(@Header("Authorization") authToken: String, @Path("id") id: String?): Observable<Boolean>
 
     /**
      * Register
