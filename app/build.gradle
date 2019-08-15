@@ -66,6 +66,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
+    implementation 'com.nulab-inc:zxcvbn:1.2.7'
+    implementation group: 'javax.mail', name: 'mail', version: '1.4.7'
+
+
     implementation 'com.google.firebase:firebase-core:17.0.1'
 
     implementation "com.google.dagger:dagger:$dagger_version"

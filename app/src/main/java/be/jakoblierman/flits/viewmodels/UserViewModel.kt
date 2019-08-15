@@ -16,11 +16,17 @@ class UserViewModel : BaseViewModel() {
     val user = MutableLiveData<User>()
     val loggedInUser = MutableLiveData<User>()
     val loadingVisibility = MutableLiveData<Int>()
+    val contentEnabled = MutableLiveData<Boolean>()
     val validEmail = MutableLiveData<Boolean>()
 
     @Inject
     lateinit var flitsApi: FlitsApi
     private var disposables = CompositeDisposable()
+
+    init {
+        loadingVisibility.value = View.GONE
+        contentEnabled.value = true
+    }
 
     fun register(fullName: String, email: String, password: String): User {
         TODO("register")
@@ -59,10 +65,12 @@ class UserViewModel : BaseViewModel() {
 
     private fun onRetrieveFinish() {
         loadingVisibility.value = View.GONE
+        contentEnabled.value = true
     }
 
     private fun onRetrieveStart() {
         loadingVisibility.value = View.VISIBLE
+        contentEnabled.value = false
     }
 
     private fun onRetrieveError(error: Throwable) {

@@ -27,10 +27,12 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
-    <string name="invalid_email">Not a valid email or already taken</string>
+    <string name="invalid_email">Not a valid email</string>
+    <string name="email_taken">Email already taken</string>
     <string name="invalid_password">Password not strong enough</string>
     <string name="incorrect_email">Incorrect email address</string>
     <string name="incorrect_password">Incorrect password</string>
+    <string name="required">Required</string>
 
     <string name="detail_location">Location</string>
     <string name="detail_beginlocation">Beginlocation</string>
