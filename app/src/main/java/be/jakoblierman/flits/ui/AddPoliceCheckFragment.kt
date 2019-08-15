@@ -1,6 +1,5 @@
 package be.jakoblierman.flits.ui
 
-
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,12 +13,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import be.jakoblierman.flits.R
 import be.jakoblierman.flits.databinding.FragmentAddPoliceCheckBinding
+import be.jakoblierman.flits.model.PoliceCheck
+import be.jakoblierman.flits.model.User
 import be.jakoblierman.flits.viewmodels.PoliceCheckViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
 class AddPoliceCheckFragment : Fragment() {
 
     private lateinit var inputLocation: TextInputEditText
+    private lateinit var inputDescription: TextInputEditText
     private lateinit var buttonCancel: Button
     private lateinit var buttonSave: Button
 
@@ -48,18 +51,28 @@ class AddPoliceCheckFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // OnClickListeners buttons
         buttonCancel = view.findViewById(R.id.button_cancel)
+        buttonSave = view.findViewById(R.id.button_save)
+        inputLocation = view.findViewById(R.id.input_location)
+        inputDescription = view.findViewById(R.id.input_description)
+
+        // OnClickListeners buttons
         buttonCancel.setOnClickListener {
             activity!!.supportFragmentManager.popBackStack()
         }
-        buttonSave = view.findViewById(R.id.button_save)
         buttonSave.setOnClickListener {
-            // TODO - save
+            val policeCheck = PoliceCheck(
+                location = inputLocation.text.toString(),
+                description = inputDescription.text.toString(),
+                // TODO USER
+                user = User(id = "1", fullName = "Test", email = "test@test.co.uk")
+            )
+            viewModel.postPoliceCheck(policeCheck)
+            activity!!.supportFragmentManager.popBackStack()
+            Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
         }
 
         // TextWatchers
-        inputLocation = view.findViewById(R.id.input_location)
         inputLocation.addTextChangedListener(watcher)
     }
 

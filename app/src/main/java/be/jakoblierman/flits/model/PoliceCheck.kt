@@ -16,7 +16,7 @@ data class PoliceCheck(
     @field:Json(name = "imagePath")
     var imagePath: String = "",
     @field:Json(name = "user")
-    var userID: User,
+    var user: User,
     @field:Json(name = "likes")
     var likes: MutableSet<User> = mutableSetOf(),
     @field:Json(name = "dislikes")

@@ -7,20 +7,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import be.jakoblierman.flits.R
 import be.jakoblierman.flits.databinding.FragmentAddSpeedCameraBinding
+import be.jakoblierman.flits.model.SpeedCamera
+import be.jakoblierman.flits.model.User
 import be.jakoblierman.flits.viewmodels.SpeedCameraViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
 class AddSpeedCameraFragment : Fragment() {
 
     private lateinit var inputLocation: TextInputEditText
+    private lateinit var inputDescription: TextInputEditText
     private lateinit var buttonCancel: Button
     private lateinit var buttonSave: Button
+    private lateinit var radioKind: RadioGroup
 
     companion object {
         @JvmStatic
@@ -47,18 +54,30 @@ class AddSpeedCameraFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // OnClickListeners buttons
         buttonCancel = view.findViewById(R.id.button_cancel)
+        buttonSave = view.findViewById(R.id.button_save)
+        inputLocation = view.findViewById(R.id.input_location)
+        inputDescription = view.findViewById(R.id.input_description)
+        radioKind = view.findViewById(R.id.radio_speedCamera_kind)
+
+        // OnClickListeners buttons
         buttonCancel.setOnClickListener {
             activity!!.supportFragmentManager.popBackStack()
         }
-        buttonSave = view.findViewById(R.id.button_save)
         buttonSave.setOnClickListener {
-            // TODO - save
+            val speedCamera = SpeedCamera(
+                location = inputLocation.text.toString(),
+                description = inputDescription.text.toString(),
+                kind = view.findViewById<RadioButton>(radioKind.checkedRadioButtonId).text.toString(),
+                // TODO USER
+                user = User(id = "1", fullName = "Test", email = "test@test.co.uk")
+            )
+            viewModel.postSpeedCamera(speedCamera)
+            activity!!.supportFragmentManager.popBackStack()
+            Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
         }
 
         // TextWatchers
-        inputLocation = view.findViewById(R.id.input_location)
         inputLocation.addTextChangedListener(watcher)
     }
 
