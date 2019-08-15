@@ -1,6 +1,7 @@
 package be.jakoblierman.flits.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -20,7 +22,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.nulabinc.zxcvbn.Zxcvbn
 import javax.mail.internet.AddressException
 import javax.mail.internet.InternetAddress
-
+import javax.security.auth.login.LoginException
 
 class RegisterFragment : Fragment() {
 
@@ -63,12 +65,24 @@ class RegisterFragment : Fragment() {
         registerButton.setOnClickListener {
             setLoading(true)
             if (viewModel.isValidEmail(emailInput.text.toString())) {
-                viewModel.register(
-                    fullNameInput.text.toString(),
-                    emailInput.text.toString(),
-                    passwordInput.text.toString()
-                )
-                // TODO other activity
+                try {
+                    viewModel.register(
+                        fullNameInput.text.toString(),
+                        emailInput.text.toString(),
+                        passwordInput.text.toString()
+                    )
+                    // Open MainActivity
+                    val intent = Intent(activity, MainActivity::class.java)
+                    startActivity(intent)
+                    activity!!.finish()
+                } catch (e: LoginException) {
+                    AlertDialog.Builder(context!!)
+                        .setTitle("Something went wrong")
+                        .setMessage(e.message)
+                        .setPositiveButton(android.R.string.ok, null)
+                        .setIcon(R.drawable.ic_error)
+                        .show()
+                }
             } else {
                 emailInputLayout.error = getString(R.string.email_taken)
                 emailInputLayout.isErrorEnabled = true

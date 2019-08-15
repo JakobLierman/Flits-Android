@@ -9,7 +9,9 @@ import com.orhanobut.logger.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
 import javax.inject.Inject
+import javax.security.auth.login.LoginException
 
 class UserViewModel : BaseViewModel() {
 
@@ -28,16 +30,27 @@ class UserViewModel : BaseViewModel() {
         contentEnabled.value = true
     }
 
-    fun register(fullName: String, email: String, password: String): User {
-        TODO("register")
+    fun register(fullName: String, email: String, password: String) {
+        try {
+            loggedInUser.value = flitsApi.register(fullName, email, password).blockingSingle()
+        } catch (e: Exception) {
+            throw LoginException((e as HttpException).response()!!.errorBody()!!.string())
+        }
     }
 
-    fun login(email: String, password: String): User {
-        TODO("login")
+    fun login(email: String, password: String) {
+        try {
+            loggedInUser.value = flitsApi.login(email, password).blockingSingle()
+        } catch (e: Exception) {
+            throw LoginException((e as HttpException).response()!!.errorBody()!!.string())
+        }
     }
 
     fun isValidEmail(email: String): Boolean {
-        return flitsApi.isValidEmail(email).blockingSingle()
+        return flitsApi.isValidEmail(email)
+            .doOnSubscribe { onRetrieveStart() }
+            .doOnTerminate { onRetrieveFinish() }
+            .blockingSingle()
     }
 
     fun isValidEmailASync(email: String) {
