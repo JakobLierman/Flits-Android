@@ -12,7 +12,15 @@
     <FrameLayout
             android:id="@+id/main_content_container"
             android:layout_width="@dimen/list_width"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+    </FrameLayout>
+
+    <View
+            android:id="@+id/dividerTwoPane"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?android:attr/listDivider"
+    />
 
     <FrameLayout
             android:id="@+id/main_detail_container"

@@ -50,4 +50,6 @@
     <string name="title_add_avgspeedcheck">New Average Speed Check</string>
     <string name="title_add_policecheck">New Police Check</string>
 
+    <string name="deleting">Deleting…</string>
+
 </resources>
