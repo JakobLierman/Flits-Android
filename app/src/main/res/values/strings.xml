@@ -22,6 +22,16 @@
     <string name="speedCameraKind_lidar">Lidar (super speed camera)</string>
     <string name="speedCameraKind_tripod">Tripod speed camera</string>
 
+    <string name="prompt_fullName">Name</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_register">Register</string>
+    <string name="invalid_email">Not a valid email or already taken</string>
+    <string name="invalid_password">Password not strong enough</string>
+    <string name="incorrect_email">Incorrect email address</string>
+    <string name="incorrect_password">Incorrect password</string>
+
     <string name="detail_location">Location</string>
     <string name="detail_beginlocation">Beginlocation</string>
     <string name="detail_endlocation">Endlocation</string>
