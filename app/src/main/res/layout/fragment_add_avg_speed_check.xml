@@ -30,7 +30,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/input_beginlocation"/>
+                        android:layout_height="wrap_content" android:id="@+id/input_beginlocation"
+                        android:inputType="textShortMessage" android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -47,7 +48,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/input_endlocation"/>
+                        android:layout_height="wrap_content" android:id="@+id/input_endlocation"
+                        android:inputType="textShortMessage" android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
