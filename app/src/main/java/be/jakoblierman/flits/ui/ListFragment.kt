@@ -19,6 +19,7 @@ import be.jakoblierman.flits.adapters.SpeedCameraRecyclerViewAdapter
 import be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel
 import be.jakoblierman.flits.viewmodels.PoliceCheckViewModel
 import be.jakoblierman.flits.viewmodels.SpeedCameraViewModel
+import com.google.android.material.snackbar.Snackbar
 
 const val ARG_ITEM_KIND_ID = "itemKindId"
 
@@ -54,6 +55,8 @@ class ListFragment : Fragment() {
                     speedCameraViewModel.speedCameras.removeObservers(thisFragment)
                     speedCameraViewModel.speedCameras.observe(thisFragment, Observer {
                         (adapter as SpeedCameraRecyclerViewAdapter).setData(it)
+                        if (it.isEmpty())
+                            Snackbar.make(view, getString(R.string.no_items), Snackbar.LENGTH_SHORT).show()
                     })
                 }
                 R.id.nav_avgSpeedCheck -> {
@@ -63,6 +66,8 @@ class ListFragment : Fragment() {
                     avgSpeedCheckViewModel.avgSpeedChecks.removeObservers(thisFragment)
                     avgSpeedCheckViewModel.avgSpeedChecks.observe(thisFragment, Observer {
                         (adapter as AvgSpeedCheckRecyclerViewAdapter).setData(it)
+                        if (it.isEmpty())
+                            Snackbar.make(view, getString(R.string.no_items), Snackbar.LENGTH_SHORT).show()
                     })
                 }
                 R.id.nav_policeCheck -> {
@@ -71,6 +76,8 @@ class ListFragment : Fragment() {
                     policeCheckViewModel.policeChecks.removeObservers(thisFragment)
                     policeCheckViewModel.policeChecks.observe(thisFragment, Observer {
                         (adapter as PoliceCheckRecyclerViewAdapter).setData(it)
+                        if (it.isEmpty())
+                            Snackbar.make(view, getString(R.string.no_items), Snackbar.LENGTH_SHORT).show()
                     })
                 }
             }
@@ -87,7 +94,6 @@ class ListFragment : Fragment() {
             R.id.nav_speedCamera -> {
                 (activity as AppCompatActivity).supportActionBar!!.title =
                     getString(R.string.menu_speedCamera)
-
                 pullToRefresh.setOnRefreshListener {
                     speedCameraViewModel.refresh()
                     pullToRefresh.isRefreshing = false
@@ -96,7 +102,6 @@ class ListFragment : Fragment() {
             R.id.nav_avgSpeedCheck -> {
                 (activity as AppCompatActivity).supportActionBar!!.title =
                     getString(R.string.menu_avgSpeedCheck)
-
                 pullToRefresh.setOnRefreshListener {
                     avgSpeedCheckViewModel.refresh()
                     pullToRefresh.isRefreshing = false
@@ -105,7 +110,6 @@ class ListFragment : Fragment() {
             R.id.nav_policeCheck -> {
                 (activity as AppCompatActivity).supportActionBar!!.title =
                     getString(R.string.menu_policeCheck)
-
                 pullToRefresh.setOnRefreshListener {
                     policeCheckViewModel.refresh()
                     pullToRefresh.isRefreshing = false
