@@ -46,7 +46,6 @@ class AddSpeedCameraFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProviders.of(this).get(SpeedCameraViewModel::class.java)
 
-
         val binding: FragmentAddSpeedCameraBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_speed_camera, container, false)
         binding.viewmodel = viewModel

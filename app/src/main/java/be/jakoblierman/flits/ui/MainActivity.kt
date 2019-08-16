@@ -62,15 +62,10 @@ class MainActivity :
         val headerView = navView.getHeaderView(0)
         val navHeaderName = headerView.findViewById<TextView>(R.id.nav_header_name)
         val navHeaderEmail = headerView.findViewById<TextView>(R.id.nav_header_email)
-        navHeaderName.setText(
-            getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE).getString(
-                "NAME",
-                getString(R.string.app_name)
-            )
-        )
-        navHeaderEmail.setText(
-            getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE).getString("EMAIL", "")
-        )
+        navHeaderName.text = getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE)
+            .getString("NAME", getString(R.string.app_name))
+        navHeaderEmail.text = getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE)
+            .getString("EMAIL", "")
 
         navView.setNavigationItemSelectedListener(this)
         if (savedInstanceState == null) {
