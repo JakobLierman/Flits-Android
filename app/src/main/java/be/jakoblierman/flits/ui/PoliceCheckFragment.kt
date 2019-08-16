@@ -1,5 +1,7 @@
 package be.jakoblierman.flits.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,8 @@ import androidx.lifecycle.ViewModelProviders
 import be.jakoblierman.flits.R
 import be.jakoblierman.flits.databinding.FragmentPoliceCheckBinding
 import be.jakoblierman.flits.viewmodels.PoliceCheckViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_police_check.*
 
 private const val ARG_POLICECHECK_ID = "policeCheckId"
@@ -31,6 +35,7 @@ class PoliceCheckFragment : Fragment() {
     }
 
     private lateinit var viewModel: PoliceCheckViewModel
+    private lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,22 +55,40 @@ class PoliceCheckFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val fab: FloatingActionButton = view.findViewById(R.id.fab_delete)
+        fab.setOnClickListener { fabView ->
+            viewModel.deletePoliceCheck(sharedPrefs.getString("TOKEN", "")!!)
+            activity!!.supportFragmentManager.popBackStack()
+            Snackbar.make(fabView, getString(R.string.deleting), Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.menu_policeCheck)
+        sharedPrefs = activity!!.getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE)
 
         arguments?.getString("policeCheckId")?.let { viewModel.getPoliceCheckById(it) }
         viewModel.policeCheck.removeObservers(this)
         viewModel.policeCheck.observe(this, Observer { policeCheck ->
-            // Hides description elements if no description is present
-            if (policeCheck.description.isBlank()) {
-                text_description_title.visibility = View.GONE
-                text_description_value.visibility = View.GONE
+            // Shows description elements if one is present
+            if (!policeCheck.description.isBlank()) {
+                text_description_title.visibility = View.VISIBLE
+                text_description_value.visibility = View.VISIBLE
             }
 
-            // Hides image is none is present
-            if (policeCheck.imagePath.isBlank())
-                imageView.visibility = View.GONE
+            // Shows image if one is present
+            if (!policeCheck.imagePath.isBlank())
+                imageView.visibility = View.VISIBLE
+
+            // Shows delete button if item owned by logged in user
+            val fab: FloatingActionButton = view!!.findViewById(R.id.fab_delete)
+            if (viewModel.policeCheck.value!!.user.id == sharedPrefs.getString("ID", "")!!)
+                fab.show()
         })
     }
 
