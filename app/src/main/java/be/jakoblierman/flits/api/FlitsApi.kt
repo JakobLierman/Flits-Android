@@ -5,6 +5,7 @@ import be.jakoblierman.flits.model.PoliceCheck
 import be.jakoblierman.flits.model.SpeedCamera
 import be.jakoblierman.flits.model.User
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.http.*
 
 interface FlitsApi {
@@ -90,7 +91,7 @@ interface FlitsApi {
         @Field("fullName") fullName: String,
         @Field("email") email: String,
         @Field("password") password: String
-    ): Observable<User>
+    ): Single<User>
 
     /**
      * Login
@@ -100,14 +101,14 @@ interface FlitsApi {
     fun login(
         @Field("email") email: String,
         @Field("password") password: String
-    ): Observable<User>
+    ): Single<User>
 
     /**
      * Check if email is unique
      */
     @FormUrlEncoded
     @POST("users/isValidEmail")
-    fun isValidEmail(@Field("email") email: String): Observable<Boolean>
+    fun isValidEmail(@Field("email") email: String): Single<Boolean>
 
     /**
      * Get user by email

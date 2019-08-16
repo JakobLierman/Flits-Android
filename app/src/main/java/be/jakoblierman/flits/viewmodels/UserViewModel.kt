@@ -6,9 +6,7 @@ import be.jakoblierman.flits.api.FlitsApi
 import be.jakoblierman.flits.base.BaseViewModel
 import be.jakoblierman.flits.model.User
 import com.orhanobut.logger.Logger
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 import javax.inject.Inject
 import javax.security.auth.login.LoginException
@@ -18,7 +16,6 @@ class UserViewModel : BaseViewModel() {
     val user = MutableLiveData<User>()
     val loadingVisibility = MutableLiveData<Int>()
     val contentEnabled = MutableLiveData<Boolean>()
-    val validEmail = MutableLiveData<Boolean>()
 
     @Inject
     lateinit var flitsApi: FlitsApi
@@ -31,7 +28,9 @@ class UserViewModel : BaseViewModel() {
 
     fun register(fullName: String, email: String, password: String): User {
         try {
-            return flitsApi.register(fullName, email, password).blockingSingle()
+            return flitsApi.register(fullName, email, password)
+                .doOnError { error -> onRetrieveError(error) }
+                .blockingGet()
         } catch (e: Exception) {
             throw LoginException((e as HttpException).response()!!.errorBody()!!.string())
         }
@@ -39,46 +38,17 @@ class UserViewModel : BaseViewModel() {
 
     fun login(email: String, password: String): User {
         try {
-            return flitsApi.login(email, password).blockingSingle()
+            return flitsApi.login(email, password)
+                .doOnError { error -> onRetrieveError(error) }
+                .blockingGet()
+
         } catch (e: Exception) {
             throw LoginException((e as HttpException).response()!!.errorBody()!!.string())
         }
     }
 
     fun isValidEmail(email: String): Boolean {
-        return flitsApi.isValidEmail(email)
-            .doOnSubscribe { onRetrieveStart() }
-            .doOnTerminate { onRetrieveFinish() }
-            .blockingSingle()
-    }
-
-    fun isValidEmailASync(email: String) {
-        disposables.add(
-            flitsApi.isValidEmail(email)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { onRetrieveStart() }
-                .doOnTerminate { onRetrieveFinish() }
-                .subscribe(
-                    { results -> onRetrieveValidEmailSuccess(results) },
-                    { error -> onRetrieveError(error) }
-                )
-        )
-    }
-
-    private fun onRetrieveValidEmailSuccess(result: Boolean) {
-        validEmail.value = result
-        Logger.i(result.toString())
-    }
-
-    private fun onRetrieveFinish() {
-        loadingVisibility.value = View.GONE
-        contentEnabled.value = true
-    }
-
-    private fun onRetrieveStart() {
-        loadingVisibility.value = View.VISIBLE
-        contentEnabled.value = false
+        return flitsApi.isValidEmail(email).blockingGet()
     }
 
     private fun onRetrieveError(error: Throwable) {
