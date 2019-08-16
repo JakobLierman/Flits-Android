@@ -1,5 +1,6 @@
 package be.jakoblierman.flits.ui
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -56,7 +57,18 @@ class LoginFragment : Fragment() {
         // OnClickListener sign in button
         signinButton.setOnClickListener {
             try {
-                viewModel.login(emailInput.text.toString(), passwordInput.text.toString())
+                val loggedInUser = viewModel.login(emailInput.text.toString(), passwordInput.text.toString())
+
+                // Save logged in user
+                val sharedPreferences = activity!!.getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE)
+                sharedPreferences.edit()
+                    .putString("ID", loggedInUser.id)
+                    .putString("NAME", loggedInUser.fullName)
+                    .putString("EMAIL", loggedInUser.email)
+                    .putString("TOKEN", "Bearer " + loggedInUser.token)
+                    .putBoolean("ISLOGGEDIN", true)
+                    .apply()
+
                 // Open MainActivity
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)

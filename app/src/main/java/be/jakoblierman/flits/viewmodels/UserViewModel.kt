@@ -16,7 +16,6 @@ import javax.security.auth.login.LoginException
 class UserViewModel : BaseViewModel() {
 
     val user = MutableLiveData<User>()
-    val loggedInUser = MutableLiveData<User>()
     val loadingVisibility = MutableLiveData<Int>()
     val contentEnabled = MutableLiveData<Boolean>()
     val validEmail = MutableLiveData<Boolean>()
@@ -30,17 +29,17 @@ class UserViewModel : BaseViewModel() {
         contentEnabled.value = true
     }
 
-    fun register(fullName: String, email: String, password: String) {
+    fun register(fullName: String, email: String, password: String): User {
         try {
-            loggedInUser.value = flitsApi.register(fullName, email, password).blockingSingle()
+            return flitsApi.register(fullName, email, password).blockingSingle()
         } catch (e: Exception) {
             throw LoginException((e as HttpException).response()!!.errorBody()!!.string())
         }
     }
 
-    fun login(email: String, password: String) {
+    fun login(email: String, password: String): User {
         try {
-            loggedInUser.value = flitsApi.login(email, password).blockingSingle()
+            return flitsApi.login(email, password).blockingSingle()
         } catch (e: Exception) {
             throw LoginException((e as HttpException).response()!!.errorBody()!!.string())
         }
