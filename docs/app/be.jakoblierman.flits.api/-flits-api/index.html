@@ -1,0 +1,171 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FlitsApi - app</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">app</a>&nbsp;/&nbsp;<a href="../index.html">be.jakoblierman.flits.api</a>&nbsp;/&nbsp;<a href="./index.html">FlitsApi</a><br/>
+<br/>
+<h1>FlitsApi</h1>
+<code><span class="keyword">interface </span><span class="identifier">FlitsApi</span></code>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="delete-avg-speed-check.html">deleteAvgSpeedCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">deleteAvgSpeedCheck</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$deleteAvgSpeedCheck(kotlin.String, kotlin.String)/authToken">authToken</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$deleteAvgSpeedCheck(kotlin.String, kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code>
+<p>Deletes AvgSpeedCheck from database</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-police-check.html">deletePoliceCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">deletePoliceCheck</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$deletePoliceCheck(kotlin.String, kotlin.String)/authToken">authToken</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$deletePoliceCheck(kotlin.String, kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code>
+<p>Deletes PoliceCheck from database</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-speed-camera.html">deleteSpeedCamera</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">deleteSpeedCamera</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$deleteSpeedCamera(kotlin.String, kotlin.String)/authToken">authToken</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$deleteSpeedCamera(kotlin.String, kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code>
+<p>Deletes SpeedCamera from database</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-avg-speed-check-by-id.html">getAvgSpeedCheckById</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getAvgSpeedCheckById</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$getAvgSpeedCheckById(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-avg-speed-check/index.html"><span class="identifier">AvgSpeedCheck</span></a><span class="symbol">&gt;</span></code>
+<p>Gets AvgSpeedCheck by id</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-avg-speed-checks.html">getAvgSpeedChecks</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getAvgSpeedChecks</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-avg-speed-check/index.html"><span class="identifier">AvgSpeedCheck</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Gets all AvgSpeedChecks</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-police-check-by-id.html">getPoliceCheckById</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getPoliceCheckById</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$getPoliceCheckById(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-police-check/index.html"><span class="identifier">PoliceCheck</span></a><span class="symbol">&gt;</span></code>
+<p>Gets PoliceCheck by id</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-police-checks.html">getPoliceChecks</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getPoliceChecks</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-police-check/index.html"><span class="identifier">PoliceCheck</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Gets all PoliceChecks</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-speed-camera-by-id.html">getSpeedCameraById</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getSpeedCameraById</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$getSpeedCameraById(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-speed-camera/index.html"><span class="identifier">SpeedCamera</span></a><span class="symbol">&gt;</span></code>
+<p>Gets SpeedCamera by id</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-speed-cameras.html">getSpeedCameras</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getSpeedCameras</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-speed-camera/index.html"><span class="identifier">SpeedCamera</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Get all SpeedCameras</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-user-by-email.html">getUserByEmail</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getUserByEmail</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$getUserByEmail(kotlin.String)/email">email</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-user/index.html"><span class="identifier">User</span></a><span class="symbol">&gt;</span></code>
+<p>Gets user by email</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-user-by-id.html">getUserById</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getUserById</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$getUserById(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-user/index.html"><span class="identifier">User</span></a><span class="symbol">&gt;</span></code>
+<p>Gets user by id</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-valid-email.html">isValidEmail</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isValidEmail</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$isValidEmail(kotlin.String)/email">email</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Single</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code>
+<p>Checks is email is valid and unique</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="login.html">login</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">login</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$login(kotlin.String, kotlin.String)/email">email</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$login(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Single</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-user/index.html"><span class="identifier">User</span></a><span class="symbol">&gt;</span></code>
+<p>Signs in existing users</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-avg-speed-check.html">postAvgSpeedCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">postAvgSpeedCheck</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$postAvgSpeedCheck(kotlin.String, be.jakoblierman.flits.model.AvgSpeedCheck)/authToken">authToken</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$postAvgSpeedCheck(kotlin.String, be.jakoblierman.flits.model.AvgSpeedCheck)/avgSpeedCheck">avgSpeedCheck</span><span class="symbol">:</span>&nbsp;<a href="../../be.jakoblierman.flits.model/-avg-speed-check/index.html"><span class="identifier">AvgSpeedCheck</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-avg-speed-check/index.html"><span class="identifier">AvgSpeedCheck</span></a><span class="symbol">&gt;</span></code>
+<p>Posts a new AvgSpeedCheck to backend</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-police-check.html">postPoliceCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">postPoliceCheck</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$postPoliceCheck(kotlin.String, be.jakoblierman.flits.model.PoliceCheck)/authToken">authToken</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$postPoliceCheck(kotlin.String, be.jakoblierman.flits.model.PoliceCheck)/policeCheck">policeCheck</span><span class="symbol">:</span>&nbsp;<a href="../../be.jakoblierman.flits.model/-police-check/index.html"><span class="identifier">PoliceCheck</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-police-check/index.html"><span class="identifier">PoliceCheck</span></a><span class="symbol">&gt;</span></code>
+<p>Posts a new PoliceCheck to backend</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-speed-camera.html">postSpeedCamera</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">postSpeedCamera</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$postSpeedCamera(kotlin.String, be.jakoblierman.flits.model.SpeedCamera)/authToken">authToken</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$postSpeedCamera(kotlin.String, be.jakoblierman.flits.model.SpeedCamera)/speedCamera">speedCamera</span><span class="symbol">:</span>&nbsp;<a href="../../be.jakoblierman.flits.model/-speed-camera/index.html"><span class="identifier">SpeedCamera</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Observable</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-speed-camera/index.html"><span class="identifier">SpeedCamera</span></a><span class="symbol">&gt;</span></code>
+<p>Posts a new SpeedCheck to backend</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register.html">register</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">register</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$register(kotlin.String, kotlin.String, kotlin.String)/fullName">fullName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$register(kotlin.String, kotlin.String, kotlin.String)/email">email</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.api.FlitsApi$register(kotlin.String, kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Single</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-user/index.html"><span class="identifier">User</span></a><span class="symbol">&gt;</span></code>
+<p>Registers a new user</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

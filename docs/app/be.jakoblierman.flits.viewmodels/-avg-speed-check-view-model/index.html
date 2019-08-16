@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AvgSpeedCheckViewModel - app</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">app</a>&nbsp;/&nbsp;<a href="../index.html">be.jakoblierman.flits.viewmodels</a>&nbsp;/&nbsp;<a href="./index.html">AvgSpeedCheckViewModel</a><br/>
+<br/>
+<h1>AvgSpeedCheckViewModel</h1>
+<code><span class="keyword">class </span><span class="identifier">AvgSpeedCheckViewModel</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../be.jakoblierman.flits.base/-base-view-model/index.html"><span class="identifier">BaseViewModel</span></a></code>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AvgSpeedCheckViewModel</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="avg-speed-check.html">avgSpeedCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">avgSpeedCheck</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-avg-speed-check/index.html"><span class="identifier">AvgSpeedCheck</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="avg-speed-checks.html">avgSpeedChecks</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">avgSpeedChecks</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-avg-speed-check/index.html"><span class="identifier">AvgSpeedCheck</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="flits-api.html">flitsApi</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">flitsApi</span><span class="symbol">: </span><a href="../../be.jakoblierman.flits.api/-flits-api/index.html"><span class="identifier">FlitsApi</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="loading-visibility.html">loadingVisibility</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">loadingVisibility</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="object-visibility.html">objectVisibility</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">objectVisibility</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="delete-avg-speed-check.html">deleteAvgSpeedCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">deleteAvgSpeedCheck</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel$deleteAvgSpeedCheck(kotlin.String)/authToken">authToken</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Deletes current avgSpeedCheck</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-avg-speed-check-by-id.html">getAvgSpeedCheckById</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getAvgSpeedCheckById</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel$getAvgSpeedCheckById(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Gets avgSpeedCheck by id</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-cleared.html">onCleared</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onCleared</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Disposes the subscription when the <a href="../../be.jakoblierman.flits.base/-base-view-model/index.html">BaseViewModel</a> is no longer used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-avg-speed-check.html">postAvgSpeedCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">postAvgSpeedCheck</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel$postAvgSpeedCheck(kotlin.String, be.jakoblierman.flits.model.AvgSpeedCheck)/authToken">authToken</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel$postAvgSpeedCheck(kotlin.String, be.jakoblierman.flits.model.AvgSpeedCheck)/avgSpeedCheck">avgSpeedCheck</span><span class="symbol">:</span>&nbsp;<a href="../../be.jakoblierman.flits.model/-avg-speed-check/index.html"><span class="identifier">AvgSpeedCheck</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Posts new avgSpeedCheck</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="refresh.html">refresh</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">refresh</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Refreshes all avgSpeedChecks</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

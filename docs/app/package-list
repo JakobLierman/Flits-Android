@@ -1,0 +1,12 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+be.jakoblierman.flits.adapters
+be.jakoblierman.flits.api
+be.jakoblierman.flits.base
+be.jakoblierman.flits.injection.component
+be.jakoblierman.flits.injection.module
+be.jakoblierman.flits.model
+be.jakoblierman.flits.ui
+be.jakoblierman.flits.util
+be.jakoblierman.flits.viewmodels

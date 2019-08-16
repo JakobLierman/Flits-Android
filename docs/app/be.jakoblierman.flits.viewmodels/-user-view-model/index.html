@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UserViewModel - app</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">app</a>&nbsp;/&nbsp;<a href="../index.html">be.jakoblierman.flits.viewmodels</a>&nbsp;/&nbsp;<a href="./index.html">UserViewModel</a><br/>
+<br/>
+<h1>UserViewModel</h1>
+<code><span class="keyword">class </span><span class="identifier">UserViewModel</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../be.jakoblierman.flits.base/-base-view-model/index.html"><span class="identifier">BaseViewModel</span></a></code>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">UserViewModel</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="content-enabled.html">contentEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">contentEnabled</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="flits-api.html">flitsApi</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">flitsApi</span><span class="symbol">: </span><a href="../../be.jakoblierman.flits.api/-flits-api/index.html"><span class="identifier">FlitsApi</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="loading-visibility.html">loadingVisibility</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">loadingVisibility</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="user.html">user</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">user</span><span class="symbol">: </span><span class="identifier">MutableLiveData</span><span class="symbol">&lt;</span><a href="../../be.jakoblierman.flits.model/-user/index.html"><span class="identifier">User</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="is-valid-email.html">isValidEmail</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">isValidEmail</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.viewmodels.UserViewModel$isValidEmail(kotlin.String)/email">email</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Checks if email is valid and unique</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="login.html">login</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">login</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.viewmodels.UserViewModel$login(kotlin.String, kotlin.String)/email">email</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.viewmodels.UserViewModel$login(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../be.jakoblierman.flits.model/-user/index.html"><span class="identifier">User</span></a></code>
+<p>Signs in existing user</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-cleared.html">onCleared</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onCleared</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Disposes the subscription when the <a href="../../be.jakoblierman.flits.base/-base-view-model/index.html">BaseViewModel</a> is no longer used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register.html">register</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">register</span><span class="symbol">(</span><span class="identifier" id="be.jakoblierman.flits.viewmodels.UserViewModel$register(kotlin.String, kotlin.String, kotlin.String)/fullName">fullName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.viewmodels.UserViewModel$register(kotlin.String, kotlin.String, kotlin.String)/email">email</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="be.jakoblierman.flits.viewmodels.UserViewModel$register(kotlin.String, kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../be.jakoblierman.flits.model/-user/index.html"><span class="identifier">User</span></a></code>
+<p>Registers a new user</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
