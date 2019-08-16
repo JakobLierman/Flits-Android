@@ -78,7 +78,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:backgroundTint="@android:color/holo_red_dark"/>
+                        app:backgroundTint="@android:color/holo_red_dark"
+                        android:visibility="gone"/>
                 <TextView
                         android:text="@{viewmodel.avgSpeedCheck.timeCreated.toString()}"
                         android:layout_width="wrap_content"

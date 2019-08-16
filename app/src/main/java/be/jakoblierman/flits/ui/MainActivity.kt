@@ -140,6 +140,7 @@ class MainActivity :
             this.supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.main_detail_container, newFragment)
+                .addToBackStack(null)
                 .commit()
         } else {
             this.supportFragmentManager

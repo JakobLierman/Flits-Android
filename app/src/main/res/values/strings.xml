@@ -22,6 +22,9 @@
     <string name="speedCameraKind_lidar">Lidar (super speed camera)</string>
     <string name="speedCameraKind_tripod">Tripod speed camera</string>
 
+    <string name="welcome">Welcome</string>
+    <string name="welcomeback">Welcome back</string>
+    <string name="logout">Successfully logged out</string>
     <string name="prompt_fullName">Name</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -45,6 +48,7 @@
     <string name="hint_beginlocation">Beginlocation</string>
     <string name="hint_endlocation">Endlocation</string>
     <string name="hint_description">Description (optional)</string>
+    <string name="onsave">Saved succesfully</string>
 
     <string name="title_add_speedcamera">New Speed Camera</string>
     <string name="title_add_avgspeedcheck">New Average Speed Check</string>
