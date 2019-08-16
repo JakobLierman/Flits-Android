@@ -77,7 +77,7 @@ class AddAvgSpeedCheckFragment : Fragment() {
             )
             viewModel.postAvgSpeedCheck(sharedPrefs.getString("TOKEN", "")!!, avgSpeedCheck)
             activity!!.supportFragmentManager.popBackStack()
-            Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(view, getString(R.string.onsave), Snackbar.LENGTH_SHORT).show()
         }
 
         // TextWatchers

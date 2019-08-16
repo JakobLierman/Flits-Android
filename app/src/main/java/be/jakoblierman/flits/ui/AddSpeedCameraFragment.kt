@@ -81,7 +81,7 @@ class AddSpeedCameraFragment : Fragment() {
             )
             viewModel.postSpeedCamera(sharedPrefs.getString("TOKEN", "")!!, speedCamera)
             activity!!.supportFragmentManager.popBackStack()
-            Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(view, getString(R.string.onsave), Snackbar.LENGTH_SHORT).show()
         }
 
         // TextWatchers

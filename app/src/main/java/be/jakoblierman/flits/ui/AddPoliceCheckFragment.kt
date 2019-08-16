@@ -75,7 +75,7 @@ class AddPoliceCheckFragment : Fragment() {
             )
             viewModel.postPoliceCheck(sharedPrefs.getString("TOKEN", "")!!, policeCheck)
             activity!!.supportFragmentManager.popBackStack()
-            Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(view, getString(R.string.onsave), Snackbar.LENGTH_SHORT).show()
         }
 
         // TextWatchers
