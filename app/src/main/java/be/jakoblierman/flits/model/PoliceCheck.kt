@@ -7,9 +7,9 @@ import java.util.*
 
 @Parcelize
 data class PoliceCheck(
-    @field:Json(name = "id")
+    @field:Json(name = "_id")
     val id: String? = null,
-    @field:Json(name = "Location")
+    @field:Json(name = "location")
     var location: String,
     @field:Json(name = "description")
     var description: String = "",
