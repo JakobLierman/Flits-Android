@@ -71,10 +71,6 @@ class UserViewModel : BaseViewModel() {
         Logger.i(result.toString())
     }
 
-    fun logout() {
-        TODO("revoke authentication")
-    }
-
     private fun onRetrieveFinish() {
         loadingVisibility.value = View.GONE
         contentEnabled.value = true
@@ -87,11 +83,6 @@ class UserViewModel : BaseViewModel() {
 
     private fun onRetrieveError(error: Throwable) {
         Logger.e(error.message!!)
-    }
-
-    private fun onRetrieveSingleSuccess(result: User) {
-        user.value = result
-        Logger.i(result.toString())
     }
 
     /**

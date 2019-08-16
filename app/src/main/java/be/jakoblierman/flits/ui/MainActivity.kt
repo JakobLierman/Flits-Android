@@ -113,7 +113,14 @@ class MainActivity :
                 .replace(R.id.main_content_container, newFragment)
                 .commit()
         } else {
-            TODO("logout not implemented")
+            // Logout
+            getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE).edit()
+                .putBoolean("ISLOGGEDIN", true).apply()
+
+            // Open AuthActivity
+            val intent = Intent(this, AuthActivity::class.java)
+            startActivity(intent)
+            finish()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
