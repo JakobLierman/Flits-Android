@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import be.jakoblierman.flits.R
 import be.jakoblierman.flits.adapters.AvgSpeedCheckRecyclerViewAdapter
 import be.jakoblierman.flits.adapters.PoliceCheckRecyclerViewAdapter
@@ -42,54 +43,74 @@ class ListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
-
+        val list = view.findViewById<RecyclerView>(R.id.list)
         // Set the adapter and loads in data
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = LinearLayoutManager(context)
-                when (itemKindId) {
-                    R.id.nav_speedCamera -> {
-                        adapter = SpeedCameraRecyclerViewAdapter(listener)
-                        speedCameraViewModel = ViewModelProviders.of(thisFragment).get(SpeedCameraViewModel::class.java)
-                        speedCameraViewModel.speedCameras.removeObservers(thisFragment)
-                        speedCameraViewModel.speedCameras.observe(thisFragment, Observer {
-                            (adapter as SpeedCameraRecyclerViewAdapter).setData(it)
-                        })
-                    }
-                    R.id.nav_avgSpeedCheck -> {
-                        adapter = AvgSpeedCheckRecyclerViewAdapter(listener)
-                        avgSpeedCheckViewModel =
-                            ViewModelProviders.of(thisFragment).get(AvgSpeedCheckViewModel::class.java)
-                        avgSpeedCheckViewModel.avgSpeedChecks.removeObservers(thisFragment)
-                        avgSpeedCheckViewModel.avgSpeedChecks.observe(thisFragment, Observer {
-                            (adapter as AvgSpeedCheckRecyclerViewAdapter).setData(it)
-                        })
-                    }
-                    R.id.nav_policeCheck -> {
-                        adapter = PoliceCheckRecyclerViewAdapter(listener)
-                        policeCheckViewModel = ViewModelProviders.of(thisFragment).get(PoliceCheckViewModel::class.java)
-                        policeCheckViewModel.policeChecks.removeObservers(thisFragment)
-                        policeCheckViewModel.policeChecks.observe(thisFragment, Observer {
-                            (adapter as PoliceCheckRecyclerViewAdapter).setData(it)
-                        })
-                    }
+        with(list) {
+            layoutManager = LinearLayoutManager(context)
+            when (itemKindId) {
+                R.id.nav_speedCamera -> {
+                    adapter = SpeedCameraRecyclerViewAdapter(listener)
+                    speedCameraViewModel = ViewModelProviders.of(thisFragment).get(SpeedCameraViewModel::class.java)
+                    speedCameraViewModel.speedCameras.removeObservers(thisFragment)
+                    speedCameraViewModel.speedCameras.observe(thisFragment, Observer {
+                        (adapter as SpeedCameraRecyclerViewAdapter).setData(it)
+                    })
+                }
+                R.id.nav_avgSpeedCheck -> {
+                    adapter = AvgSpeedCheckRecyclerViewAdapter(listener)
+                    avgSpeedCheckViewModel =
+                        ViewModelProviders.of(thisFragment).get(AvgSpeedCheckViewModel::class.java)
+                    avgSpeedCheckViewModel.avgSpeedChecks.removeObservers(thisFragment)
+                    avgSpeedCheckViewModel.avgSpeedChecks.observe(thisFragment, Observer {
+                        (adapter as AvgSpeedCheckRecyclerViewAdapter).setData(it)
+                    })
+                }
+                R.id.nav_policeCheck -> {
+                    adapter = PoliceCheckRecyclerViewAdapter(listener)
+                    policeCheckViewModel = ViewModelProviders.of(thisFragment).get(PoliceCheckViewModel::class.java)
+                    policeCheckViewModel.policeChecks.removeObservers(thisFragment)
+                    policeCheckViewModel.policeChecks.observe(thisFragment, Observer {
+                        (adapter as PoliceCheckRecyclerViewAdapter).setData(it)
+                    })
                 }
             }
         }
-
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        // Change toolbar title
+
+        val pullToRefresh = view!!.findViewById<SwipeRefreshLayout>(R.id.pull_to_refresh)
+        // Change toolbar title and add pull to refresh functionality
         when (itemKindId) {
-            R.id.nav_speedCamera -> (activity as AppCompatActivity).supportActionBar!!.title =
-                getString(R.string.menu_speedCamera)
-            R.id.nav_avgSpeedCheck -> (activity as AppCompatActivity).supportActionBar!!.title =
-                getString(R.string.menu_avgSpeedCheck)
-            R.id.nav_policeCheck -> (activity as AppCompatActivity).supportActionBar!!.title =
-                getString(R.string.menu_policeCheck)
+            R.id.nav_speedCamera -> {
+                (activity as AppCompatActivity).supportActionBar!!.title =
+                    getString(R.string.menu_speedCamera)
+
+                pullToRefresh.setOnRefreshListener {
+                    speedCameraViewModel.refresh()
+                    pullToRefresh.isRefreshing = false
+                }
+            }
+            R.id.nav_avgSpeedCheck -> {
+                (activity as AppCompatActivity).supportActionBar!!.title =
+                    getString(R.string.menu_avgSpeedCheck)
+
+                pullToRefresh.setOnRefreshListener {
+                    avgSpeedCheckViewModel.refresh()
+                    pullToRefresh.isRefreshing = false
+                }
+            }
+            R.id.nav_policeCheck -> {
+                (activity as AppCompatActivity).supportActionBar!!.title =
+                    getString(R.string.menu_policeCheck)
+
+                pullToRefresh.setOnRefreshListener {
+                    policeCheckViewModel.refresh()
+                    pullToRefresh.isRefreshing = false
+                }
+            }
         }
     }
 
