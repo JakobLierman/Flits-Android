@@ -39,9 +39,11 @@ class SpeedCameraRecyclerViewAdapter(
         val item = mValues[position]
         holder.titleView.text = item.location
         holder.subtitleView.text = item.timeCreated.toString()
-        if (item.expireDate!! < Date()) {
-            holder.titleView.setTextColor(Color.GRAY)
-            holder.subtitleView.setTextColor(Color.GRAY)
+        if (item.expireDate != null) {
+            if (item.expireDate!! < Date()) {
+                holder.titleView.setTextColor(Color.GRAY)
+                holder.subtitleView.setTextColor(Color.GRAY)
+            }
         }
 
         with(holder.mView) {
