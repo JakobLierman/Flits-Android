@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -55,6 +56,20 @@ class MainActivity :
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        // Set name and email in navHeader
+        val headerView = navView.getHeaderView(0)
+        val navHeaderName = headerView.findViewById<TextView>(R.id.nav_header_name)
+        val navHeaderEmail = headerView.findViewById<TextView>(R.id.nav_header_email)
+        navHeaderName.setText(
+            getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE).getString(
+                "NAME",
+                getString(R.string.app_name)
+            )
+        )
+        navHeaderEmail.setText(
+            getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE).getString("EMAIL", "")
+        )
 
         navView.setNavigationItemSelectedListener(this)
         if (savedInstanceState == null) {
