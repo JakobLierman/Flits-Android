@@ -67,6 +67,7 @@ class AddSpeedCameraFragment : Fragment() {
         // OnClickListeners buttons
         buttonCancel.setOnClickListener {
             activity!!.supportFragmentManager.popBackStack()
+            (activity as MainActivity).hideKeyboard()
         }
         buttonSave.setOnClickListener {
             val speedCamera = SpeedCamera(
@@ -81,9 +82,10 @@ class AddSpeedCameraFragment : Fragment() {
             )
             viewModel.postSpeedCamera(sharedPrefs.getString("TOKEN", "")!!, speedCamera)
             activity!!.supportFragmentManager.popBackStack()
+            (activity as MainActivity).hideKeyboard()
             Snackbar.make(view, getString(R.string.onsave), Snackbar.LENGTH_SHORT).show()
         }
-
+        
         // TextWatchers
         inputLocation.addTextChangedListener(watcher)
     }

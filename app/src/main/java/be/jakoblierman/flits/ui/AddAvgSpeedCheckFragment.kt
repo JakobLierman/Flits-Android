@@ -64,6 +64,7 @@ class AddAvgSpeedCheckFragment : Fragment() {
         // OnClickListeners buttons
         buttonCancel.setOnClickListener {
             activity!!.supportFragmentManager.popBackStack()
+            (activity as MainActivity).hideKeyboard()
         }
         buttonSave.setOnClickListener {
             val avgSpeedCheck = AvgSpeedCheck(
@@ -77,6 +78,7 @@ class AddAvgSpeedCheckFragment : Fragment() {
             )
             viewModel.postAvgSpeedCheck(sharedPrefs.getString("TOKEN", "")!!, avgSpeedCheck)
             activity!!.supportFragmentManager.popBackStack()
+            (activity as MainActivity).hideKeyboard()
             Snackbar.make(view, getString(R.string.onsave), Snackbar.LENGTH_SHORT).show()
         }
 

@@ -72,8 +72,10 @@ class LoginFragment : Fragment() {
                 // Open MainActivity
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
+                (activity as AuthActivity).hideKeyboard()
                 activity!!.finish()
             } catch (e: LoginException) {
+                (activity as AuthActivity).hideKeyboard()
                 AlertDialog.Builder(context!!)
                     .setTitle("Something went wrong")
                     .setMessage(e.message)

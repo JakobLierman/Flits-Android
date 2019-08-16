@@ -23,6 +23,7 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AuthActivity).hideKeyboard()
 
         registerButton = view.findViewById(R.id.button_register)
         signinButton = view.findViewById(R.id.button_sign_in)

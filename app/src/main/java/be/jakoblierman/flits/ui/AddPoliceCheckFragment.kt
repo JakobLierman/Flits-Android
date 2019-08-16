@@ -62,6 +62,7 @@ class AddPoliceCheckFragment : Fragment() {
         // OnClickListeners buttons
         buttonCancel.setOnClickListener {
             activity!!.supportFragmentManager.popBackStack()
+            (activity as MainActivity).hideKeyboard()
         }
         buttonSave.setOnClickListener {
             val policeCheck = PoliceCheck(
@@ -75,6 +76,7 @@ class AddPoliceCheckFragment : Fragment() {
             )
             viewModel.postPoliceCheck(sharedPrefs.getString("TOKEN", "")!!, policeCheck)
             activity!!.supportFragmentManager.popBackStack()
+            (activity as MainActivity).hideKeyboard()
             Snackbar.make(view, getString(R.string.onsave), Snackbar.LENGTH_SHORT).show()
         }
 

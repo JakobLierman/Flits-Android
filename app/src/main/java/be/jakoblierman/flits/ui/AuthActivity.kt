@@ -1,7 +1,10 @@
 package be.jakoblierman.flits.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Window
+import android.view.inputmethod.InputMethodManager
+import android.view.inputmethod.InputMethodManager.HIDE_NOT_ALWAYS
 import androidx.appcompat.app.AppCompatActivity
 import be.jakoblierman.flits.R
 
@@ -21,6 +24,17 @@ class AuthActivity : AppCompatActivity() {
             .commit()
 
         supportActionBar!!.hide()
+    }
+
+    fun hideKeyboard() {
+        val inputManager = this
+            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        // check if no view has focus:
+        val currentFocusedView = this.currentFocus
+        if (currentFocusedView != null) {
+            inputManager.hideSoftInputFromWindow(currentFocusedView.windowToken, HIDE_NOT_ALWAYS)
+        }
     }
 
 }
