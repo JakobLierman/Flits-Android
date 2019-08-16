@@ -51,6 +51,11 @@ class PoliceCheckRecyclerViewAdapter(
         val subtitleView: TextView = mView.item_subtitle
     }
 
+    /**
+     * Sets data to be displayed in RecyclerView
+     *
+     * @param newData
+     */
     fun setData(newData: List<PoliceCheck>) {
         val postDiffCallback = PostDiffCallback(mValues, newData)
         val diffResult = DiffUtil.calculateDiff(postDiffCallback)

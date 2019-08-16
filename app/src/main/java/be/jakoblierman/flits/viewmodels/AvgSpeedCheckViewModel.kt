@@ -36,6 +36,10 @@ class AvgSpeedCheckViewModel : BaseViewModel() {
         )
     }
 
+    /**
+     * Refreshes all avgSpeedChecks
+     *
+     */
     fun refresh() {
         disposables.clear()
         disposables.add(
@@ -56,6 +60,11 @@ class AvgSpeedCheckViewModel : BaseViewModel() {
         Logger.i(results.toString())
     }
 
+    /**
+     * Gets avgSpeedCheck by id
+     *
+     * @param id
+     */
     fun getAvgSpeedCheckById(id: String) {
         disposables.add(
             flitsApi.getAvgSpeedCheckById(id)
@@ -89,6 +98,12 @@ class AvgSpeedCheckViewModel : BaseViewModel() {
         objectVisibility.value = View.GONE
     }
 
+    /**
+     * Posts new avgSpeedCheck
+     *
+     * @param authToken
+     * @param avgSpeedCheck
+     */
     fun postAvgSpeedCheck(authToken: String, avgSpeedCheck: AvgSpeedCheck) {
         disposables.add(
             flitsApi.postAvgSpeedCheck(authToken, avgSpeedCheck)
@@ -103,6 +118,11 @@ class AvgSpeedCheckViewModel : BaseViewModel() {
         )
     }
 
+    /**
+     * Deletes current avgSpeedCheck
+     *
+     * @param authToken
+     */
     fun deleteAvgSpeedCheck(authToken: String) {
         disposables.add(
             flitsApi.deleteAvgSpeedCheck(authToken, avgSpeedCheck.value!!.id)

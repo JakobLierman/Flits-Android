@@ -36,6 +36,10 @@ class PoliceCheckViewModel : BaseViewModel() {
         )
     }
 
+    /**
+     * Refreshes all policeChecks
+     *
+     */
     fun refresh() {
         disposables.clear()
         disposables.add(
@@ -56,6 +60,11 @@ class PoliceCheckViewModel : BaseViewModel() {
         Logger.i(results.toString())
     }
 
+    /**
+     * Gets policeCheck by id
+     *
+     * @param id
+     */
     fun getPoliceCheckById(id: String) {
         disposables.add(
             flitsApi.getPoliceCheckById(id)
@@ -89,6 +98,12 @@ class PoliceCheckViewModel : BaseViewModel() {
         objectVisibility.value = View.GONE
     }
 
+    /**
+     * Posts new policeCheck
+     *
+     * @param authToken
+     * @param policeCheck
+     */
     fun postPoliceCheck(authToken: String, policeCheck: PoliceCheck) {
         disposables.add(
             flitsApi.postPoliceCheck(authToken, policeCheck)
@@ -103,6 +118,11 @@ class PoliceCheckViewModel : BaseViewModel() {
         )
     }
 
+    /**
+     * Deletes current policeCheck
+     *
+     * @param authToken
+     */
     fun deletePoliceCheck(authToken: String) {
         disposables.add(
             flitsApi.deletePoliceCheck(authToken, policeCheck.value!!.id)

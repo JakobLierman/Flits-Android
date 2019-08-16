@@ -37,6 +37,10 @@ class SpeedCameraViewModel : BaseViewModel() {
         )
     }
 
+    /**
+     * Refreshes all SpeedCameras
+     *
+     */
     fun refresh() {
         disposables.clear()
         disposables.add(
@@ -57,6 +61,11 @@ class SpeedCameraViewModel : BaseViewModel() {
         Logger.i(results.toString())
     }
 
+    /**
+     * Gets speedCamera by id
+     *
+     * @param id
+     */
     fun getSpeedCameraById(id: String) {
         disposables.add(
             flitsApi.getSpeedCameraById(id)
@@ -90,6 +99,12 @@ class SpeedCameraViewModel : BaseViewModel() {
         objectVisibility.value = GONE
     }
 
+    /**
+     * Posts new speedCamera
+     *
+     * @param authToken
+     * @param speedCamera
+     */
     fun postSpeedCamera(authToken: String, speedCamera: SpeedCamera) {
         disposables.add(
             flitsApi.postSpeedCamera(authToken, speedCamera)
@@ -104,6 +119,11 @@ class SpeedCameraViewModel : BaseViewModel() {
         )
     }
 
+    /**
+     * Delete current speedCamera
+     *
+     * @param authToken
+     */
     fun deleteSpeedCamera(authToken: String) {
         disposables.add(
             flitsApi.deleteSpeedCamera(authToken, speedCamera.value!!.id)

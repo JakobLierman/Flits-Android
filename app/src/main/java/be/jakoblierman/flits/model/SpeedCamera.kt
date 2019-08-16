@@ -5,6 +5,20 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
+/**
+ * Speed Camera entity
+ *
+ * @property id
+ * @property location
+ * @property kind
+ * @property description
+ * @property imagePath
+ * @property user
+ * @property likes
+ * @property dislikes
+ * @property timeCreated
+ * @property expireDate
+ */
 @Parcelize
 data class SpeedCamera(
     @field:Json(name = "_id")

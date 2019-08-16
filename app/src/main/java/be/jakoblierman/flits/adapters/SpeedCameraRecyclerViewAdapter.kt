@@ -59,6 +59,11 @@ class SpeedCameraRecyclerViewAdapter(
         val subtitleView: TextView = mView.item_subtitle
     }
 
+    /**
+     * Sets data to be displayed in RecyclerView
+     *
+     * @param newData
+     */
     fun setData(newData: List<SpeedCamera>) {
         val postDiffCallback = PostDiffCallback(mValues, newData)
         val diffResult = DiffUtil.calculateDiff(postDiffCallback)

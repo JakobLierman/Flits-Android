@@ -5,6 +5,17 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
+/**
+ * Average Speed Check entity
+ *
+ * @property id
+ * @property beginLocation
+ * @property endLocation
+ * @property user
+ * @property likes
+ * @property dislikes
+ * @property timeCreated
+ */
 @Parcelize
 data class AvgSpeedCheck(
     @field:Json(name = "_id")

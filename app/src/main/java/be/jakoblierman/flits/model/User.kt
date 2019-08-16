@@ -4,6 +4,14 @@ import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * User entity
+ *
+ * @property id
+ * @property fullName
+ * @property email
+ * @property token (only for logged in user)
+ */
 @Parcelize
 data class User(
     @field:Json(name = "_id")

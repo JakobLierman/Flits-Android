@@ -51,13 +51,18 @@ class AvgSpeedCheckRecyclerViewAdapter(
         val subtitleView: TextView = mView.item_subtitle
     }
 
+    /**
+     * Sets data to be displayed in RecyclerView
+     *
+     * @param newData
+     */
     fun setData(newData: List<AvgSpeedCheck>) {
         val postDiffCallback = PostDiffCallback(mValues, newData)
         val diffResult = DiffUtil.calculateDiff(postDiffCallback)
 
         mValues.clear()
         mValues.addAll(newData)
-        
+
         diffResult.dispatchUpdatesTo(this)
     }
 

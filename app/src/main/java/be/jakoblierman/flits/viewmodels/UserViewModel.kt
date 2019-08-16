@@ -26,6 +26,14 @@ class UserViewModel : BaseViewModel() {
         contentEnabled.value = true
     }
 
+    /**
+     * Registers a new user
+     *
+     * @param fullName
+     * @param email
+     * @param password
+     * @return user with token
+     */
     fun register(fullName: String, email: String, password: String): User {
         try {
             return flitsApi.register(fullName, email, password)
@@ -36,6 +44,13 @@ class UserViewModel : BaseViewModel() {
         }
     }
 
+    /**
+     * Signs in existing user
+     *
+     * @param email
+     * @param password
+     * @return user with token
+     */
     fun login(email: String, password: String): User {
         try {
             return flitsApi.login(email, password)
@@ -47,6 +62,12 @@ class UserViewModel : BaseViewModel() {
         }
     }
 
+    /**
+     * Checks if email is valid and unique
+     *
+     * @param email
+     * @return true if valid
+     */
     fun isValidEmail(email: String): Boolean {
         return flitsApi.isValidEmail(email).blockingGet()
     }

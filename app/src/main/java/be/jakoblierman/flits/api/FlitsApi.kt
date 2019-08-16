@@ -12,78 +12,122 @@ interface FlitsApi {
 
     /**
      * Get all SpeedCameras
+     *
+     * @return Observable List of SpeedCamera
      */
     @GET("speedCameras")
     fun getSpeedCameras(): Observable<List<SpeedCamera>>
 
     /**
-     * Get SpeedCamera by id
+     * Gets SpeedCamera by id
+     *
+     * @param id
+     * @return Observable of SpeedCamera
      */
     @GET("speedCameras/{id}")
     fun getSpeedCameraById(@Path("id") id: String): Observable<SpeedCamera>
 
     /**
-     * Get all AvgSpeedChecks
+     * Gets all AvgSpeedChecks
+     *
+     * @return Observable List of AvgSpeedChecks
      */
     @GET("avgSpeedChecks")
     fun getAvgSpeedChecks(): Observable<List<AvgSpeedCheck>>
 
     /**
-     * Get AvgSpeedCheck by id
+     * Gets AvgSpeedCheck by id
+     *
+     * @param id
+     * @return Observable of AvgSpeedCheck
      */
     @GET("avgSpeedChecks/{id}")
     fun getAvgSpeedCheckById(@Path("id") id: String): Observable<AvgSpeedCheck>
 
     /**
-     * Get all PoliceChecks
+     * Gets all PoliceChecks
+     *
+     * @return Observable List of PoliceCheck
      */
     @GET("policeChecks")
     fun getPoliceChecks(): Observable<List<PoliceCheck>>
 
     /**
-     * Get PoliceCheck by id
+     * Gets PoliceCheck by id
+     *
+     * @param id
+     * @return Observable of PoliceCheck
      */
     @GET("policeChecks/{id}")
     fun getPoliceCheckById(@Path("id") id: String): Observable<PoliceCheck>
 
     /**
-     * Post SpeedCamera
+     * Posts a new SpeedCheck to backend
+     *
+     * @param authToken
+     * @param speedCamera
+     * @return SpeedCheck Observable
      */
     @POST("speedCameras")
     fun postSpeedCamera(@Header("Authorization") authToken: String, @Body speedCamera: SpeedCamera): Observable<SpeedCamera>
 
     /**
-     * Post AvgSpeedCheck
+     * Posts a new AvgSpeedCheck to backend
+     *
+     * @param authToken
+     * @param avgSpeedCheck
+     * @return AvgSpeedCheck Observable
      */
     @POST("avgSpeedChecks")
     fun postAvgSpeedCheck(@Header("Authorization") authToken: String, @Body avgSpeedCheck: AvgSpeedCheck): Observable<AvgSpeedCheck>
 
     /**
-     * Post PoliceCheck
+     * Posts a new PoliceCheck to backend
+     *
+     * @param authToken
+     * @param policeCheck
+     * @return PoliceCheck Observable
      */
     @POST("policeChecks")
     fun postPoliceCheck(@Header("Authorization") authToken: String, @Body policeCheck: PoliceCheck): Observable<PoliceCheck>
 
     /**
-     * Delete SpeedCamera
+     * Deletes SpeedCamera from database
+     *
+     * @param authToken
+     * @param id
+     * @return true if deleted
      */
     @DELETE("speedCameras/{id}")
     fun deleteSpeedCamera(@Header("Authorization") authToken: String, @Path("id") id: String?): Observable<Boolean>
 
     /**
-     * Delete AvgSpeedCheck
+     * Deletes AvgSpeedCheck from database
+     *
+     * @param authToken
+     * @param id
+     * @return true if deleted
      */
     @DELETE("avgSpeedChecks/{id}")
     fun deleteAvgSpeedCheck(@Header("Authorization") authToken: String, @Path("id") id: String?): Observable<Boolean>
 
     /**
-     * Delete PoliceCheck
+     * Deletes PoliceCheck from database
+     *
+     * @param authToken
+     * @param id
+     * @return true if deleted
      */
     @DELETE("policeChecks/{id}")
     fun deletePoliceCheck(@Header("Authorization") authToken: String, @Path("id") id: String?): Observable<Boolean>
 
     /**
-     * Register
+     * Registers a new user
+     *
+     * @param fullName
+     * @param email
+     * @param password
+     * @return User with token
      */
     @FormUrlEncoded
     @POST("users/register")
@@ -94,7 +138,11 @@ interface FlitsApi {
     ): Single<User>
 
     /**
-     * Login
+     * Signs in existing users
+     *
+     * @param email
+     * @param password
+     * @return User with token
      */
     @FormUrlEncoded
     @POST("users/login")
@@ -104,20 +152,29 @@ interface FlitsApi {
     ): Single<User>
 
     /**
-     * Check if email is unique
+     * Checks is email is valid and unique
+     *
+     * @param email
+     * @return true if valid
      */
     @FormUrlEncoded
     @POST("users/isValidEmail")
     fun isValidEmail(@Field("email") email: String): Single<Boolean>
 
     /**
-     * Get user by email
+     * Gets user by email
+     *
+     * @param email
+     * @return user
      */
     @GET("users/{email}")
     fun getUserByEmail(@Path("email") email: String): Observable<User>
 
     /**
-     * Get user by id
+     * Gets user by id
+     *
+     * @param id
+     * @return
      */
     @GET("users/id/{id}")
     fun getUserById(@Path("id") id: String): Observable<User>
