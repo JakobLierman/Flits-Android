@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import be.jakoblierman.flits.R
 
 class WelcomeFragment : Fragment() {
@@ -41,6 +42,7 @@ class WelcomeFragment : Fragment() {
         activity!!.supportFragmentManager
             .beginTransaction()
             .replace(R.id.auth_content_container, newFragment)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             .addToBackStack(null)
             .commit()
     }

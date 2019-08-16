@@ -14,6 +14,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import be.jakoblierman.flits.R
 import com.google.android.material.navigation.NavigationView
 import com.orhanobut.logger.AndroidLogAdapter
@@ -157,12 +158,14 @@ class MainActivity :
             this.supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.main_detail_container, newFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit()
         } else {
             this.supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.main_content_container, newFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit()
         }
