@@ -37,6 +37,21 @@ class SpeedCameraViewModel : BaseViewModel() {
         )
     }
 
+    fun refresh() {
+        disposables.clear()
+        disposables.add(
+            flitsApi.getSpeedCameras()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { onRetrieveStart() }
+                .doOnTerminate { onRetrieveFinish() }
+                .subscribe(
+                    { results -> onRetrieveListSuccess(results) },
+                    { error -> onRetrieveError(error) }
+                )
+        )
+    }
+
     private fun onRetrieveListSuccess(results: List<SpeedCamera>) {
         speedCameras.value = results
         Logger.i(results.toString())

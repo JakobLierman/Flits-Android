@@ -36,6 +36,21 @@ class AvgSpeedCheckViewModel : BaseViewModel() {
         )
     }
 
+    fun refresh() {
+        disposables.clear()
+        disposables.add(
+            flitsApi.getAvgSpeedChecks()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { onRetrieveStart() }
+                .doOnTerminate { onRetrieveFinish() }
+                .subscribe(
+                    { results -> onRetrieveListSuccess(results) },
+                    { error -> onRetrieveError(error) }
+                )
+        )
+    }
+
     private fun onRetrieveListSuccess(results: List<AvgSpeedCheck>) {
         avgSpeedChecks.value = results
         Logger.i(results.toString())

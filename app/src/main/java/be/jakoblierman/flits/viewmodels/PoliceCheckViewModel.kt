@@ -36,6 +36,21 @@ class PoliceCheckViewModel : BaseViewModel() {
         )
     }
 
+    fun refresh() {
+        disposables.clear()
+        disposables.add(
+            flitsApi.getPoliceChecks()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { onRetrieveStart() }
+                .doOnTerminate { onRetrieveFinish() }
+                .subscribe(
+                    { results -> onRetrieveListSuccess(results) },
+                    { error -> onRetrieveError(error) }
+                )
+        )
+    }
+
     private fun onRetrieveListSuccess(results: List<PoliceCheck>) {
         policeChecks.value = results
         Logger.i(results.toString())
