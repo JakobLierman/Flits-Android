@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import be.jakoblierman.flits.R
 import com.google.android.material.navigation.NavigationView
 import com.orhanobut.logger.AndroidLogAdapter
@@ -103,6 +104,7 @@ class MainActivity :
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         // Handle navigation view item clicks.
         val newFragment: Fragment
         if (item.itemId != R.id.nav_logout) {
@@ -115,7 +117,6 @@ class MainActivity :
         } else {
             // Logout
             val sharedPref = getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE)
-            val logoutUser = sharedPref.getString("NAME", "")
             sharedPref.edit().clear().apply()
             // Open AuthActivity
             val intent = Intent(this, AuthActivity::class.java)
