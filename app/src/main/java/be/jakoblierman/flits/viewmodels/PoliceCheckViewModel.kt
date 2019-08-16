@@ -118,8 +118,6 @@ class PoliceCheckViewModel : BaseViewModel() {
     }
 
     private fun onRetrieveDeleteSuccess(result: Boolean) {
-        // TODO
-        //policeCheck.value = result
         Logger.i(result.toString())
     }
 

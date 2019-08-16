@@ -118,8 +118,6 @@ class AvgSpeedCheckViewModel : BaseViewModel() {
     }
 
     private fun onRetrieveDeleteSuccess(result: Boolean) {
-        // TODO
-        //avgSpeedCheck.value = result
         Logger.i(result.toString())
     }
 

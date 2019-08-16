@@ -48,8 +48,8 @@
     <string name="hint_beginlocation">Beginlocation</string>
     <string name="hint_endlocation">Endlocation</string>
     <string name="hint_description">Description (optional)</string>
-    <string name="onsave">Saved succesfully</string>
     <string name="no_items">No items</string>
+    <string name="on_save">Saved successfully</string>
 
     <string name="title_add_speedcamera">New Speed Camera</string>
     <string name="title_add_avgspeedcheck">New Average Speed Check</string>

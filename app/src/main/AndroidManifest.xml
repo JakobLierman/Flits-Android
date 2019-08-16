@@ -13,7 +13,7 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".ui.AuthActivity"
-                android:screenOrientation="portrait">
+        >
         </activity>
         <activity
                 android:name=".ui.MainActivity"

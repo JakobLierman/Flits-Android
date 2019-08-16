@@ -79,7 +79,7 @@ class AddAvgSpeedCheckFragment : Fragment() {
             viewModel.postAvgSpeedCheck(sharedPrefs.getString("TOKEN", "")!!, avgSpeedCheck)
             activity!!.supportFragmentManager.popBackStack()
             (activity as MainActivity).hideKeyboard()
-            Snackbar.make(view, getString(R.string.onsave), Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(view, getString(R.string.on_save), Snackbar.LENGTH_SHORT).show()
         }
 
         // TextWatchers

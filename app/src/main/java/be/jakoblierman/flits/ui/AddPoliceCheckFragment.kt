@@ -77,7 +77,7 @@ class AddPoliceCheckFragment : Fragment() {
             viewModel.postPoliceCheck(sharedPrefs.getString("TOKEN", "")!!, policeCheck)
             activity!!.supportFragmentManager.popBackStack()
             (activity as MainActivity).hideKeyboard()
-            Snackbar.make(view, getString(R.string.onsave), Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(view, getString(R.string.on_save), Snackbar.LENGTH_SHORT).show()
         }
 
         // TextWatchers

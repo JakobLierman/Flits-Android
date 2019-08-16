@@ -119,8 +119,6 @@ class SpeedCameraViewModel : BaseViewModel() {
     }
 
     private fun onRetrieveDeleteSuccess(result: Boolean) {
-        // TODO
-        //speedCamera.value = result
         Logger.i(result.toString())
     }
 
