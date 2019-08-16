@@ -1,5 +1,7 @@
 package be.jakoblierman.flits.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,7 +18,6 @@ import be.jakoblierman.flits.databinding.FragmentAddPoliceCheckBinding
 import be.jakoblierman.flits.model.PoliceCheck
 import be.jakoblierman.flits.model.User
 import be.jakoblierman.flits.viewmodels.PoliceCheckViewModel
-import be.jakoblierman.flits.viewmodels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
@@ -34,14 +35,13 @@ class AddPoliceCheckFragment : Fragment() {
     }
 
     private lateinit var viewModel: PoliceCheckViewModel
-    private lateinit var loggedInUser: User
+    private lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProviders.of(this).get(PoliceCheckViewModel::class.java)
-        loggedInUser = ViewModelProviders.of(this).get(UserViewModel::class.java).loggedInUser.value!!
 
         val binding: FragmentAddPoliceCheckBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_police_check, container, false)
@@ -67,10 +67,13 @@ class AddPoliceCheckFragment : Fragment() {
             val policeCheck = PoliceCheck(
                 location = inputLocation.text.toString(),
                 description = inputDescription.text.toString(),
-                // TODO USER
-                user = User(id = "1", fullName = "Test", email = "test@test.co.uk")
+                user = User(
+                    sharedPrefs.getString("ID", "")!!,
+                    sharedPrefs.getString("NAME", "")!!,
+                    sharedPrefs.getString("EMAIL", "")!!
+                )
             )
-            viewModel.postPoliceCheck(loggedInUser.token!!, policeCheck)
+            viewModel.postPoliceCheck(sharedPrefs.getString("TOKEN", "")!!, policeCheck)
             activity!!.supportFragmentManager.popBackStack()
             Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
         }
@@ -82,6 +85,7 @@ class AddPoliceCheckFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.title_add_policecheck)
+        sharedPrefs = activity!!.getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE)
     }
 
     private val watcher = object : TextWatcher {

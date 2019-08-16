@@ -1,5 +1,7 @@
 package be.jakoblierman.flits.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -18,7 +20,6 @@ import be.jakoblierman.flits.databinding.FragmentAddSpeedCameraBinding
 import be.jakoblierman.flits.model.SpeedCamera
 import be.jakoblierman.flits.model.User
 import be.jakoblierman.flits.viewmodels.SpeedCameraViewModel
-import be.jakoblierman.flits.viewmodels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
@@ -37,14 +38,14 @@ class AddSpeedCameraFragment : Fragment() {
     }
 
     private lateinit var viewModel: SpeedCameraViewModel
-    private lateinit var loggedInUser: User
+    private lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProviders.of(this).get(SpeedCameraViewModel::class.java)
-        loggedInUser = ViewModelProviders.of(this).get(UserViewModel::class.java).loggedInUser.value!!
+
 
         val binding: FragmentAddSpeedCameraBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_speed_camera, container, false)
@@ -72,10 +73,13 @@ class AddSpeedCameraFragment : Fragment() {
                 location = inputLocation.text.toString(),
                 description = inputDescription.text.toString(),
                 kind = view.findViewById<RadioButton>(radioKind.checkedRadioButtonId).text.toString(),
-                // TODO USER
-                user = User(id = "1", fullName = "Test", email = "test@test.co.uk")
+                user = User(
+                    sharedPrefs.getString("ID", "")!!,
+                    sharedPrefs.getString("NAME", "")!!,
+                    sharedPrefs.getString("EMAIL", "")!!
+                )
             )
-            viewModel.postSpeedCamera(loggedInUser.token!!, speedCamera)
+            viewModel.postSpeedCamera(sharedPrefs.getString("TOKEN", "")!!, speedCamera)
             activity!!.supportFragmentManager.popBackStack()
             Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
         }
@@ -87,6 +91,7 @@ class AddSpeedCameraFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.title_add_speedcamera)
+        sharedPrefs = activity!!.getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE)
     }
 
     private val watcher = object : TextWatcher {

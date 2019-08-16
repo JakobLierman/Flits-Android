@@ -1,6 +1,8 @@
 package be.jakoblierman.flits.ui
 
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,7 +19,6 @@ import be.jakoblierman.flits.databinding.FragmentAddAvgSpeedCheckBinding
 import be.jakoblierman.flits.model.AvgSpeedCheck
 import be.jakoblierman.flits.model.User
 import be.jakoblierman.flits.viewmodels.AvgSpeedCheckViewModel
-import be.jakoblierman.flits.viewmodels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
@@ -36,14 +37,13 @@ class AddAvgSpeedCheckFragment : Fragment() {
     }
 
     private lateinit var viewModel: AvgSpeedCheckViewModel
-    private lateinit var loggedInUser: User
+    private lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProviders.of(this).get(AvgSpeedCheckViewModel::class.java)
-        loggedInUser = ViewModelProviders.of(this).get(UserViewModel::class.java).loggedInUser.value!!
 
         val binding: FragmentAddAvgSpeedCheckBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_avg_speed_check, container, false)
@@ -69,10 +69,13 @@ class AddAvgSpeedCheckFragment : Fragment() {
             val avgSpeedCheck = AvgSpeedCheck(
                 beginLocation = inputBeginLocation.text.toString(),
                 endLocation = inputEndLocation.text.toString(),
-                // TODO USER
-                user = User(id = "1", fullName = "Test", email = "test@test.co.uk")
+                user = User(
+                    sharedPrefs.getString("ID", "")!!,
+                    sharedPrefs.getString("NAME", "")!!,
+                    sharedPrefs.getString("EMAIL", "")!!
+                )
             )
-            viewModel.postAvgSpeedCheck(loggedInUser.token!!, avgSpeedCheck)
+            viewModel.postAvgSpeedCheck(sharedPrefs.getString("TOKEN", "")!!, avgSpeedCheck)
             activity!!.supportFragmentManager.popBackStack()
             Snackbar.make(view, "Saved succesfully", Snackbar.LENGTH_SHORT).show()
         }
@@ -85,6 +88,7 @@ class AddAvgSpeedCheckFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.title_add_avgspeedcheck)
+        sharedPrefs = activity!!.getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE)
     }
 
     private val watcher = object : TextWatcher {
