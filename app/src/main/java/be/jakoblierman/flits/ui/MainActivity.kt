@@ -114,9 +114,9 @@ class MainActivity :
                 .commit()
         } else {
             // Logout
-            getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE).edit()
-                .putBoolean("ISLOGGEDIN", true).apply()
-
+            val sharedPref = getSharedPreferences("USER_CREDENTIALS", Context.MODE_PRIVATE)
+            val logoutUser = sharedPref.getString("NAME", "")
+            sharedPref.edit().clear().apply()
             // Open AuthActivity
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
