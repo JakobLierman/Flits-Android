@@ -1,5 +1,6 @@
 package be.jakoblierman.flits.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import be.jakoblierman.flits.R
 import be.jakoblierman.flits.model.SpeedCamera
 import be.jakoblierman.flits.ui.ListFragment
 import kotlinx.android.synthetic.main.fragment_listitem.view.*
+import java.util.*
 
 class SpeedCameraRecyclerViewAdapter(
     private val mListener: ListFragment.OnListFragmentInteractionListener?
@@ -37,6 +39,10 @@ class SpeedCameraRecyclerViewAdapter(
         val item = mValues[position]
         holder.titleView.text = item.location
         holder.subtitleView.text = item.timeCreated.toString()
+        if (item.expireDate!! < Date()) {
+            holder.titleView.setTextColor(Color.GRAY)
+            holder.subtitleView.setTextColor(Color.GRAY)
+        }
 
         with(holder.mView) {
             tag = item
